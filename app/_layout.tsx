@@ -1,0 +1,54 @@
+import React, { useEffect } from "react";
+import { StatusBar, StyleSheet } from "react-native";
+import { Slot } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import { useFonts } from "expo-font";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Footer from "./Footer";
+import {
+  setStatusBarBackgroundColor,
+  setStatusBarStyle,
+  setStatusBarTranslucent,
+} from "expo-status-bar";
+
+// Prevent the splash screen from auto-hiding
+SplashScreen.preventAutoHideAsync();
+
+export default function Layout() {
+  setStatusBarBackgroundColor("#ffffff", false);
+  setStatusBarStyle("light", false);
+  setStatusBarTranslucent(false);
+  const [fontsLoaded] = useFonts({
+    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
+  });
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" />
+      <Slot />
+      <Footer />
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  footer: {
+    padding: 16,
+    backgroundColor: "#eee",
+    alignItems: "center",
+  },
+});

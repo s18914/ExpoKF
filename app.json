@@ -3,6 +3,7 @@
     "name": "ExpoKF",
     "slug": "ExpoKF",
     "version": "1.0.0",
+    "scheme": "myApp",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "automatic",
@@ -27,9 +28,6 @@
       "favicon": "./assets/images/favicon.png",
       "bundler": "metro"
     },
-    "plugins": [
-      "expo-font",
-      "expo-router"
-    ]
+    "plugins": ["expo-font", "expo-router"]
   }
 }
