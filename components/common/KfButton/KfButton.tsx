@@ -9,13 +9,15 @@ interface Props {
   type: KFButtonTypes;
   icon?: string;
   isDisabled?: boolean;
-  onPress?: () => {};
+  onPress?: () => {} | void;
 }
 
 export enum KFButtonTypes {
   Gradient,
   Outlined,
+  OutlinedWhite,
   Dark,
+  White,
 }
 
 const KfButton: FunctionComponent<Props> = ({
@@ -27,8 +29,12 @@ const KfButton: FunctionComponent<Props> = ({
     switch (type) {
       case KFButtonTypes.Outlined:
         return style.buttonOutlined;
+      case KFButtonTypes.OutlinedWhite:
+        return style.buttonOutlinedWhite;
       case KFButtonTypes.Dark:
         return style.buttonDark;
+      case KFButtonTypes.White:
+        return style.buttonWhite;
     }
   };
 
@@ -74,14 +80,32 @@ const KfButton: FunctionComponent<Props> = ({
     );
   }
 
+  if (type == KFButtonTypes.White) {
+    return (
+      <Pressable
+        disabled={isDisabled}
+        style={[style.pressable, styleToApply(), isDisabled && style.disabled]}
+        onPress={() => (props.onPress ? props.onPress() : null)}
+      >
+        <Text style={[style.title, style.titleDark]}>{props.title}</Text>
+
+        <Svg
+          width={16}
+          height={16}
+          fill="#000000ff"
+          viewBox="0 0 100 100"
+          {...props}
+        >
+          <Path d="m58.369 10.173-5.62 5.87 31.267 29.892H0v8.117h84.016L52.75 83.957l5.619 5.87L100 49.993Z" />
+        </Svg>
+      </Pressable>
+    );
+  }
+
   return (
     <Pressable
       disabled={isDisabled}
-      style={[
-        style.pressable,
-        style.buttonOutlined,
-        isDisabled && style.disabled,
-      ]}
+      style={[style.pressable, styleToApply(), isDisabled && style.disabled]}
       onPress={() => (props.onPress ? props.onPress() : null)}
     >
       <Text
@@ -90,7 +114,7 @@ const KfButton: FunctionComponent<Props> = ({
         {props.title}
       </Text>
 
-      <Svg width={15} height={15} fill="#fff" {...props}>
+      <Svg width={16} height={16} fill="#fff" viewBox="0 0 100 100" {...props}>
         <Path d="m58.369 10.173-5.62 5.87 31.267 29.892H0v8.117h84.016L52.75 83.957l5.619 5.87L100 49.993Z" />
       </Svg>
     </Pressable>

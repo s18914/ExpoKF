@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { useRouter } from "expo-router";
+import { View, StyleSheet, Image } from "react-native";
 import Svg, { Defs, RadialGradient, Rect, Stop } from "react-native-svg";
 import KfText from "../../components/common/KfText/KfText";
 import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
@@ -8,15 +8,17 @@ import KfButton, {
 } from "../../components/common/KfButton/KfButton";
 
 const Hello = () => {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       <Svg
         width="1200"
         height="2500"
-        style={{ position: "absolute", transform: [{ rotate: "-55deg" }] }}
+        style={{ position: "absolute", transform: [{ rotate: "-56deg" }] }}
       >
         <Defs>
-          <RadialGradient id="grad" cx="75%" cy="40%" r="35%" fx="75%" fy="50%">
+          <RadialGradient id="grad" cx="74%" cy="38%" r="44%" fx="75%" fy="50%">
             <Stop offset="0" stopColor="rgba(255, 255, 255, 1)" />
             <Stop offset="0.3" stopColor="rgba(255, 255, 255, 1)" />
             <Stop offset="0.35" stopColor="rgba(228, 255, 199, 1)" />
@@ -38,6 +40,10 @@ const Hello = () => {
         source={require("../../assets/images/KF_Logo3D.png")}
         style={styles.logo3D}
       />
+      <Image
+        source={require("../../assets/images/spark.png")}
+        style={styles.spark}
+      />
       <View style={styles.content}>
         <Image
           source={require("../../assets/images/splash-icon.png")}
@@ -53,12 +59,13 @@ const Hello = () => {
           <View style={styles.buttonsContainer}>
             <KfButton
               title={"Mam konto. Aktywuj aplikację"}
-              type={KFButtonTypes.Gradient}
+              type={KFButtonTypes.White}
               icon="arrow"
+              onPress={() => router.push("/registration/login")}
             />
             <KfButton
               title={"Nie mam konta. Otwórz za darmo"}
-              type={KFButtonTypes.Outlined}
+              type={KFButtonTypes.OutlinedWhite}
               icon="arrow"
             />
           </View>
@@ -81,8 +88,13 @@ const styles = StyleSheet.create({
   },
   logo3D: {
     position: "absolute",
-    top: verticalScale(70),
+    top: verticalScale(60),
     left: horizontalScale(0),
+  },
+  spark: {
+    position: "absolute",
+    top: verticalScale(-180),
+    left: horizontalScale(-300),
   },
   content: {
     display: "flex",

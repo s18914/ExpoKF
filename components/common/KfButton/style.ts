@@ -41,7 +41,17 @@ const style = StyleSheet.create({
     borderStyle: "solid",
     borderColor: "#97979720",
   },
+  buttonOutlinedWhite: {
+    borderRadius: horizontalScale(8),
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: "white",
+  },
   buttonDark: {},
+  buttonWhite: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: horizontalScale(8),
+  },
 });
 
 export default style;

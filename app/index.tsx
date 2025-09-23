@@ -6,9 +6,9 @@ const Home = () => {
   const router = useRouter();
 
   useEffect(() => {
-    console.log("Home component mounted");
+    //console.log("Home component mounted");
     if (typeof window !== "undefined") {
-      router.navigate("/registration");
+      router.push("/registration");
     }
   }, []),
     (

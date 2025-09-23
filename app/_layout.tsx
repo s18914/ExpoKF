@@ -16,8 +16,8 @@ SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
   setStatusBarBackgroundColor("#ffffff", false);
-  setStatusBarStyle("light", false);
-  setStatusBarTranslucent(false); //na telefonie false, na emulatorze true
+  setStatusBarStyle("auto", false);
+  setStatusBarTranslucent(true); //na telefonie false, na emulatorze true
   const [fontsLoaded] = useFonts({
     EuclidCircularB: require("../assets/fonts/EuclidCircularB-Medium.ttf"),
   });
