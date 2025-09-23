@@ -1,10 +1,22 @@
+import { useRouter } from "expo-router";
+import { useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Home = () => (
-  <View style={styles.container}>
-    <Text style={styles.text}>Welcome to the Home Screen!</Text>
-  </View>
-);
+const Home = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    console.log("Home component mounted");
+    if (typeof window !== "undefined") {
+      router.navigate("/registration");
+    }
+  }, []),
+    (
+      <View style={styles.container}>
+        <Text style={styles.text}>Welcome to the Home Screen!</Text>
+      </View>
+    );
+};
 
 const styles = StyleSheet.create({
   container: {

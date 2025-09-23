@@ -2,6 +2,13 @@ import { StyleSheet } from "react-native";
 import { scaleFontSize } from "../../../assets/styles/scaling";
 
 const style = StyleSheet.create({
+  title0: {
+    fontFamily: "EuclidCircularB",
+    fontWeight: "500",
+    letterSpacing: -1.67,
+    fontSize: scaleFontSize(48),
+    lineHeight: scaleFontSize(53),
+  },
   title1: {
     fontFamily: "EuclidCircularB",
     fontWeight: "500",
@@ -25,19 +32,26 @@ const style = StyleSheet.create({
   },
   title4: {
     fontFamily: "EuclidCircularB",
+    fontWeight: "400",
+    letterSpacing: -1,
+    fontSize: scaleFontSize(20),
+    lineHeight: scaleFontSize(27),
+  },
+  title5: {
+    fontFamily: "EuclidCircularB",
     fontWeight: "500",
     letterSpacing: -0.75,
     fontSize: scaleFontSize(18),
     lineHeight: scaleFontSize(22),
   },
-  title5: {
+  title6: {
     fontFamily: "EuclidCircularB",
     fontWeight: "400",
     letterSpacing: -0.8,
     fontSize: scaleFontSize(18),
     lineHeight: scaleFontSize(25),
   },
-  title6: {
+  title7: {
     fontFamily: "EuclidCircularB",
     fontWeight: "400",
     letterSpacing: -0.73,

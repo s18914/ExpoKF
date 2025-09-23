@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
-import { Pressable, Text, View } from 'react-native';
-import style from './style';
-import LinearGradient from 'react-native-linear-gradient';
-import Svg, { Path } from 'react-native-svg';
+import React, { FunctionComponent } from "react";
+import { Pressable, Text, View } from "react-native";
+import style from "./style";
+import { LinearGradient } from "expo-linear-gradient";
+import Svg, { Path } from "react-native-svg";
 
 interface Props {
   title: string;
@@ -35,7 +35,7 @@ const KfButton: FunctionComponent<Props> = ({
   if (type == KFButtonTypes.Gradient) {
     return (
       <LinearGradient
-        colors={['rgba(5, 206, 153, 1))', 'rgba(114, 222, 61, 1)']}
+        colors={["rgba(5, 206, 153, 1))", "rgba(114, 222, 61, 1)"]}
         style={style.background}
         start={{ x: 0, y: 0.5 }}
         end={{ x: 1, y: 0.5 }}
@@ -45,7 +45,7 @@ const KfButton: FunctionComponent<Props> = ({
           style={[style.pressable, isDisabled && style.disabled]}
           onPress={() => (props.onPress ? props.onPress() : null)}
         >
-          {props.icon == 'reset' && (
+          {props.icon == "reset" && (
             <Svg width={27} height={27} {...props}>
               <Path
                 fill="#fff"
@@ -58,7 +58,7 @@ const KfButton: FunctionComponent<Props> = ({
             </Svg>
           )}
           <Text style={style.title}>{props.title}</Text>
-          {props.icon == 'arrow' && (
+          {props.icon == "arrow" && (
             <Svg
               width={13}
               height={13}

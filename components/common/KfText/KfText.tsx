@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
-import { View, Text } from 'react-native';
-import style from './style';
+import React, { FunctionComponent } from "react";
+import { View, Text } from "react-native";
+import style from "./style";
 
 interface Props {
   title: string;
@@ -11,14 +11,16 @@ interface Props {
 }
 
 const KfText: FunctionComponent<Props> = ({
-  title = '',
+  title = "",
   type = 1,
-  color = '#1f2225',
+  color = "#1f2225",
   numberOfLines,
   isTextCenter = true,
 }) => {
   const styleToApply = () => {
     switch (type) {
+      case 0:
+        return style.title0;
       case 1:
         return style.title1;
       case 2:
@@ -29,6 +31,10 @@ const KfText: FunctionComponent<Props> = ({
         return style.title4;
       case 5:
         return style.title5;
+      case 6:
+        return style.title6;
+      case 7:
+        return style.title7;
     }
   };
   return (
@@ -37,7 +43,7 @@ const KfText: FunctionComponent<Props> = ({
         style={[
           styleToApply(),
           color && { color: color },
-          isTextCenter && { textAlign: 'center' },
+          isTextCenter && { textAlign: "center" },
         ]}
         numberOfLines={numberOfLines ? numberOfLines : undefined}
       >

@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react';
-import { View } from 'react-native';
+import React, { FunctionComponent } from "react";
+import { View } from "react-native";
 
-import style from './style';
-import BackButton from '../../common/BackButton/BackButton';
-import Header from '../../common/KfTeaxt/KfText';
-import KfStatusBar from '../../common/KfStatusBar/KfStatusBar';
+import style from "./style";
+import BackButton from "../../common/BackButton/BackButton";
+import Header from "../../common/KfText/KfText";
+import KfStatusBar from "../../common/KfStatusBar/KfStatusBar";
 
 interface Props {
   title: string;
@@ -19,7 +19,7 @@ const KfPageHeader: FunctionComponent<Props> = ({ ...props }) => {
         <BackButton
           style={style.arrow}
           onPress={function (): void {
-            throw new Error('Function not implemented.');
+            throw new Error("Function not implemented.");
           }}
         />
         <Header title={props.title} type={5} />

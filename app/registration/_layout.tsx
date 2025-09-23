@@ -4,7 +4,6 @@ import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Footer from "./Footer";
 import {
   setStatusBarBackgroundColor,
   setStatusBarStyle,
@@ -17,9 +16,9 @@ SplashScreen.preventAutoHideAsync();
 export default function Layout() {
   setStatusBarBackgroundColor("#ffffff", false);
   setStatusBarStyle("light", false);
-  setStatusBarTranslucent(false); //na telefonie false, na emulatorze true
+  setStatusBarTranslucent(true); //na telefonie false, na emulatorze true
   const [fontsLoaded] = useFonts({
-    EuclidCircularB: require("../assets/fonts/EuclidCircularB-Medium.ttf"),
+    EuclidCircularB: require("../../assets/fonts/EuclidCircularB-Medium.ttf"),
   });
 
   useEffect(() => {
@@ -32,13 +31,7 @@ export default function Layout() {
     return null;
   }
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      <Slot />
-      {/* <Footer /> */}
-    </SafeAreaView>
-  );
+  return <Slot />;
 }
 
 const styles = StyleSheet.create({

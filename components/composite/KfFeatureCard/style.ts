@@ -3,7 +3,7 @@ import {
   scaleFontSize,
   verticalScale,
   horizontalScale,
-} from "../../assets/styles/scaling";
+} from "../../../assets/styles/scaling";
 
 const style = StyleSheet.create({
   container: {
