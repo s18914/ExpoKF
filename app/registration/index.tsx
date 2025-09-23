@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import Svg, { Defs, RadialGradient, Rect, Stop } from "react-native-svg";
 import KfText from "../../components/common/KfText/KfText";
-import { verticalScale } from "../../assets/styles/scaling";
+import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
 import KfButton, {
   KFButtonTypes,
 } from "../../components/common/KfButton/KfButton";
@@ -11,12 +11,12 @@ const Hello = () => {
   return (
     <View style={styles.container}>
       <Svg
-        width="250%"
-        height="200%"
+        width="1200"
+        height="2500"
         style={{ position: "absolute", transform: [{ rotate: "-55deg" }] }}
       >
         <Defs>
-          <RadialGradient id="grad" cx="75%" cy="30%" r="50%" fx="75%" fy="50%">
+          <RadialGradient id="grad" cx="75%" cy="40%" r="35%" fx="75%" fy="50%">
             <Stop offset="0" stopColor="rgba(255, 255, 255, 1)" />
             <Stop offset="0.3" stopColor="rgba(255, 255, 255, 1)" />
             <Stop offset="0.35" stopColor="rgba(228, 255, 199, 1)" />
@@ -34,30 +34,10 @@ const Hello = () => {
         </Defs>
         <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad)" />
       </Svg>
-      {/* <RadialGradient
-        style={styles.gradient}
-        colors={[
-          "rgba(255, 255, 255, 1)",
-          "rgba(255, 255, 255, 1)",
-          "rgba(228, 255, 199, 1)",
-          "rgba(255, 255, 255, 1)",
-          "rgba(230, 255, 204, 1)",
-          "rgba(255, 255, 255, 1)",
-          "rgba(195, 255, 131, 1)",
-          "rgba(168, 255, 145, 1)",
-          "rgba(255, 255, 255, 1)",
-          "rgba(165, 255, 141, 1)",
-          "rgba(18, 207, 151, 1)",
-          "rgba(4, 126, 89, 1)",
-          "rgba(4, 126, 89, 1)",
-          "rgba(5, 41, 30, 1)",
-        ]}
-        stops={[
-          0, 0.3, 0.35, 0.37, 0.38, 0.44, 0.51, 0.57, 0.66, 0.71, 0.83, 0.92, 1,
-        ]}
-        center={[150, 50]}
-        radius={850}
-      ></RadialGradient> */}
+      <Image
+        source={require("../../assets/images/KF_Logo3D.png")}
+        style={styles.logo3D}
+      />
       <View style={styles.content}>
         <Image
           source={require("../../assets/images/splash-icon.png")}
@@ -98,6 +78,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     height: "100%",
+  },
+  logo3D: {
+    position: "absolute",
+    top: verticalScale(70),
+    left: horizontalScale(0),
   },
   content: {
     display: "flex",
