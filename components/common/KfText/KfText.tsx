@@ -8,6 +8,7 @@ interface Props {
   color?: string;
   numberOfLines?: number;
   isTextCenter?: boolean;
+  otherStyles?: object;
 }
 
 const KfText: FunctionComponent<Props> = ({
@@ -15,7 +16,8 @@ const KfText: FunctionComponent<Props> = ({
   type = 1,
   color = "#1f2225",
   numberOfLines,
-  isTextCenter = true,
+  isTextCenter = false,
+  otherStyles,
 }) => {
   const styleToApply = () => {
     switch (type) {
@@ -46,6 +48,7 @@ const KfText: FunctionComponent<Props> = ({
           styleToApply(),
           color && { color: color },
           isTextCenter && { textAlign: "center" },
+          otherStyles && otherStyles,
         ]}
         numberOfLines={numberOfLines ? numberOfLines : undefined}
       >

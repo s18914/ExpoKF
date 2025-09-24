@@ -58,9 +58,15 @@ const Hello = () => {
           style={{ width: 165, height: 45 }}
         />
         <View style={styles.text}>
-          <KfText type={0} color="white" title={"Witamy na KupFundusz.pl"} />
+          <KfText
+            type={0}
+            color="white"
+            isTextCenter={true}
+            title={"Witamy na KupFundusz.pl"}
+          />
           <KfText
             type={4}
+            isTextCenter={true}
             color="white"
             title="Ponad 400 funduszy inwestycyjnych bez prowizji w jednym miejscu."
           />

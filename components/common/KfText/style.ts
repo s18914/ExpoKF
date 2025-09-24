@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { scaleFontSize } from "../../../assets/styles/scaling";
+import { scaleFontSize, verticalScale } from "../../../assets/styles/scaling";
 
 const style = StyleSheet.create({
   title0: {
@@ -15,6 +15,7 @@ const style = StyleSheet.create({
     letterSpacing: -1.67,
     fontSize: scaleFontSize(40),
     lineHeight: scaleFontSize(46),
+    paddingBottom: verticalScale(20),
   },
   title2: {
     fontFamily: "EuclidCircularM",
@@ -50,6 +51,7 @@ const style = StyleSheet.create({
     letterSpacing: -0.8,
     fontSize: scaleFontSize(18),
     lineHeight: scaleFontSize(25),
+    paddingBottom: verticalScale(22),
   },
   title7: {
     fontFamily: "EuclidCircularR",
