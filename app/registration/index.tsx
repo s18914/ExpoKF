@@ -6,12 +6,20 @@ import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
 import KfButton, {
   KFButtonTypes,
 } from "../../components/common/KfButton/KfButton";
+import { globalStyles } from "../../assets/styles/globalStyles";
+import { useContext } from "react";
+import { RegistrationContext } from "./_layout";
 
 const Hello = () => {
   const router = useRouter();
+  const regContext = useContext(RegistrationContext);
+  const goToLogin = () => {
+    router.push("/registration/login");
+    regContext.updateStep(1);
+  };
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <Svg
         width="1200"
         height="2500"
@@ -56,12 +64,12 @@ const Hello = () => {
             color="white"
             title="Ponad 400 funduszy inwestycyjnych bez prowizji w jednym miejscu."
           />
-          <View style={styles.buttonsContainer}>
+          <View style={globalStyles.buttonsContainer}>
             <KfButton
               title={"Mam konto. Aktywuj aplikację"}
               type={KFButtonTypes.White}
               icon="arrow"
-              onPress={() => router.push("/registration/login")}
+              onPress={goToLogin}
             />
             <KfButton
               title={"Nie mam konta. Otwórz za darmo"}
@@ -76,11 +84,6 @@ const Hello = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   gradient: {
     position: "absolute",
     width: "100%",
@@ -104,17 +107,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    padding: verticalScale(30),
+    padding: horizontalScale(25),
     display: "flex",
     gap: verticalScale(20),
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-  },
-  buttonsContainer: {
-    display: "flex",
-    gap: 15,
-    width: "100%",
   },
 });
 

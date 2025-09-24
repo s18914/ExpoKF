@@ -19,7 +19,10 @@ export default function Layout() {
   setStatusBarStyle("auto", false);
   setStatusBarTranslucent(true); //na telefonie false, na emulatorze true
   const [fontsLoaded] = useFonts({
-    EuclidCircularB: require("../assets/fonts/EuclidCircularB-Medium.ttf"),
+    EuclidCircularR: require("../assets/fonts/EuclidCircularB-Regular.ttf"),
+    EuclidCircularM: require("../assets/fonts/EuclidCircularB-Medium.ttf"),
+    EuclidCircularS: require("../assets/fonts/EuclidCircularB-SemiBold.ttf"),
+    EuclidCircularB: require("../assets/fonts/EuclidCircularB-Bold.ttf"),
   });
 
   useEffect(() => {

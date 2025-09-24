@@ -10,7 +10,7 @@ import {
 import Header from "../../common/KfText/KfText";
 import KfButton, { KFButtonTypes } from "../../common/KfButton/KfButton";
 import FaceId from "../../../assets/icons/fingerprint";
-import KfPageHeader from "../KfPageHeader/KfPageHeader";
+import KfRegistrationHeader from "../KfRegistrationHeader/KfRegistrationHeader";
 
 interface Props {
   title: string;
@@ -44,13 +44,7 @@ const KfFeatureCard: FunctionComponent<Props> = ({ title = "", ...props }) => {
 
   return (
     <View>
-      <KfPageHeader
-        step={2}
-        title="Aktywacja aplikacji (krok 2 z 5)"
-        onBack={function (s: string): {} {
-          throw new Error("Function not implemented.");
-        }}
-      />
+      <KfRegistrationHeader />
       <View style={style.container}>
         <View style={style.background}>
           <RadialGradient
