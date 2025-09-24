@@ -18,12 +18,15 @@ const KfRegistrationHeader: FunctionComponent<Props> = () => {
   return (
     <>
       <View style={style.container}>
-        <BackButton
-          style={style.arrow}
-          onPress={function (): void {
-            throw new Error("Function not implemented.");
-          }}
-        />
+        {registerCtx.step !== 1 && (
+          <BackButton
+            style={style.arrow}
+            onPress={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          />
+        )}
+
         <Header
           title={`Aktywacja aplikacji (krok ${registerCtx.step} z 5)`}
           type={5}

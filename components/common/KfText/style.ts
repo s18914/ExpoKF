@@ -58,6 +58,14 @@ const style = StyleSheet.create({
     fontSize: scaleFontSize(16),
     lineHeight: scaleFontSize(27),
   },
+  title10: {
+    fontFamily: "EuclidCircularR",
+    fontWeight: "400",
+    letterSpacing: -0.82,
+    textDecorationLine: "underline",
+    fontSize: scaleFontSize(18),
+    lineHeight: scaleFontSize(27),
+  },
 });
 
 export default style;

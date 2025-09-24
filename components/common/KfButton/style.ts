@@ -24,8 +24,7 @@ const style = StyleSheet.create({
     opacity: 0.5,
   },
   title: {
-    fontFamily: "EuclidCircularB",
-    fontWeight: "500",
+    fontFamily: "EuclidCircularM",
     fontSize: scaleFontSize(17),
     lineHeight: scaleFontSize(27),
     color: "#FFFFFF",

@@ -18,7 +18,6 @@ export const globalStyles = StyleSheet.create({
     display: "flex",
     height: "100%",
     width: "100%",
-    justifyContent: "space-between",
     alignItems: "center",
     padding: horizontalScale(25),
   },
