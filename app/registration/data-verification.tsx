@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
-import { useEffect } from "react";
-import { View, Text, StyleSheet, KeyboardTypeOptions } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Pressable, View } from "react-native";
 import KfText from "../../components/common/KfText/KfText";
 import KfInput from "../../components/common/KfInput/KfInput";
 import { globalStyles } from "../../assets/styles/globalStyles";
@@ -10,12 +10,14 @@ import KfButton, {
   KFButtonTypes,
 } from "../../components/common/KfButton/KfButton";
 
-import AskSmall from "../../assets/icons/ask_small.jsx";
-import InfoSmall from "../../assets/icons/info.jsx";
 import KfRegistrationHeader from "../../components/composite/KfRegistrationHeader/KfRegistrationHeader";
 import Notify from "../../components/common/Notify/Notify";
+import SmsCodeInput from "../../components/common/CodeInput/CodeInput";
+import BottomDrawer from "../../components/common/BottomDrawer/BottomDrawer";
+import SmsCodeDrawer from "../../components/drawers/SmsCodeDarwer";
 
 const DataVerification = () => {
+  const [visible, setVisible] = useState(false);
   return (
     <>
       <KfRegistrationHeader />
@@ -46,19 +48,21 @@ const DataVerification = () => {
             }}
           />
 
-          <KfInput
-            keyboardType={"numeric"}
-            placeholder={"Wpisz hasło"}
+          <SmsCodeInput
             label={"Kod z wiadomości SMS"}
-            onChangeText={function (s: string): {} {
-              throw new Error("Function not implemented.");
-            }}
+            value={""}
+            onChange={() => {}}
           />
-          <KfText title="Kod SMS nie dotarł" type={10} />
+
+          <Pressable onPress={() => setVisible(true)}>
+            <KfText title="Kod SMS nie dotarł" type={10} />
+          </Pressable>
+
+          <BottomDrawer visible={visible} onClose={() => setVisible(false)}>
+            <SmsCodeDrawer />
+          </BottomDrawer>
         </View>
-        <View
-          style={[globalStyles.buttonsContainer, { gap: verticalScale(22) }]}
-        >
+        <View style={[globalStyles.buttonsContainer]}>
           <KfButton
             title={"Dalej"}
             type={KFButtonTypes.Gradient}
