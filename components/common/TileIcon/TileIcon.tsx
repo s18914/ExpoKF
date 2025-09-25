@@ -4,8 +4,9 @@ import style from "./style";
 import Svg, { Defs, RadialGradient, Rect, Stop } from "react-native-svg";
 
 import BadgeLock from "../../../assets/icons/badge_lock.jsx";
-import Wallet from "../../../assets/icons/wallet.jsx";
+import Wallet from "../../../assets/icons/menu/wallet.jsx";
 import Tools from "../../../assets/icons/tools.jsx";
+import User from "../../../assets/icons/user.jsx";
 
 type IconName = keyof typeof iconComponents;
 
@@ -15,12 +16,12 @@ interface TileIconProps {
 }
 
 const colors = {
-  "var(--dark-green)": "rgba(0, 209, 139, 0.4)",
-  "var(--light-green)": "rgba(78, 207, 23, 0.4)",
-  "var(--yellow)": "rgba(235, 197, 42, 0.4)",
-  "var(--light-violet)": "rgba(196, 67, 255, 0.4)",
-  "var(--blue)": "rgba(38, 106, 255, 0.4)",
-  "var(--dark-violet)": "rgba(116, 67, 255, 0.4)",
+  "dark-green": "rgba(0, 209, 139, 0.4)",
+  "light-green": "rgba(78, 207, 23, 0.4)",
+  yellow: "rgba(235, 197, 42, 0.4)",
+  "light-violet": "rgba(196, 67, 255, 0.4)",
+  blue: "rgba(38, 106, 255, 0.4)",
+  "dark-violet": "rgba(116, 67, 255, 0.4)",
   default: "rgba(234, 44, 159, 0.4)",
 };
 
@@ -28,6 +29,7 @@ const iconComponents = {
   badge_lock: BadgeLock,
   wallet: Wallet,
   tools: Tools,
+  user: User,
 };
 
 const TileIcon: FunctionComponent<TileIconProps> = ({

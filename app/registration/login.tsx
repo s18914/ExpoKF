@@ -14,7 +14,7 @@ const Login = () => {
   return (
     <View style={globalStyles.content}>
       <View>
-        <TileIcon icon="badge_lock" color="var(--light-green)" />
+        <TileIcon icon="user" color="light-green" />
         <KfText title="Pierwsze logowanie" type={1} />
         <KfText
           title="Wprowadź dane do logowania powiązane z Twoim kontem na KupFundusz.pl"
