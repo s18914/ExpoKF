@@ -13,6 +13,7 @@ import KfButton, {
 import AskSmall from "../../assets/icons/ask_small.jsx";
 import InfoSmall from "../../assets/icons/info.jsx";
 import KfRegistrationHeader from "../../components/composite/KfRegistrationHeader/KfRegistrationHeader";
+import Notify from "../../components/common/Notify/Notify";
 
 const DataVerification = () => {
   return (
@@ -26,6 +27,15 @@ const DataVerification = () => {
             title="To Twoje pierwsze logowanie do aplikacji, dlatego musimy potwierdzić Twoje dane."
             type={6}
           />
+
+          <View
+            style={{
+              marginTop: verticalScale(10),
+              marginBottom: verticalScale(30),
+            }}
+          >
+            <Notify text="Na Twój numer telefonu została wysłana&nbsp;wiadomość z kodem SMS." />
+          </View>
 
           <KfInput
             keyboardType={"numeric"}
