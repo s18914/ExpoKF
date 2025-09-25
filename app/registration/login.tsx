@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { View, Text, StyleSheet, KeyboardTypeOptions } from "react-native";
 import KfText from "../../components/common/KfText/KfText";
 import KfInput from "../../components/common/KfInput/KfInput";
@@ -10,55 +10,87 @@ import KfButton, {
   KFButtonTypes,
 } from "../../components/common/KfButton/KfButton";
 
-const Login = () => {
-  return (
-    <View style={globalStyles.content}>
-      <View>
-        <TileIcon icon="user" color="light-green" />
-        <KfText title="Pierwsze logowanie" type={1} />
-        <KfText
-          title="Wprowadź dane do logowania powiązane z Twoim kontem na KupFundusz.pl"
-          type={6}
-        />
+import AskSmall from "../../assets/icons/ask_small.jsx";
+import InfoSmall from "../../assets/icons/info.jsx";
+import KfRegistrationHeader from "../../components/composite/KfRegistrationHeader/KfRegistrationHeader";
+import { RegistrationContext } from "./_layout";
 
-        <KfInput
-          keyboardType={"numeric"}
-          placeholder={"Wpisz numer klienta"}
-          label={"Numer klienta (8-cyfrowy)"}
-          onChangeText={function (s: string): {} {
-            throw new Error("Function not implemented.");
-          }}
-        />
-        <KfText
-          title="Nie pamiętam numeru klienta"
-          type={10}
-          otherStyles={{ marginBottom: verticalScale(26) }}
-        />
-        <KfInput
-          keyboardType={"numeric"}
-          placeholder={"Wpisz hasło"}
-          label={"Hasło"}
-          onChangeText={function (s: string): {} {
-            throw new Error("Function not implemented.");
-          }}
-        />
-        <KfText title="Nie pamiętam hasła" type={10} />
-      </View>
-      <View style={[globalStyles.buttonsContainer, { gap: verticalScale(22) }]}>
-        <KfButton title={"Dalej"} type={KFButtonTypes.Gradient} icon="arrow" />
+const Login = () => {
+  const router = useRouter();
+  const regContext = useContext(RegistrationContext);
+  const goToNextStep = () => {
+    router.push("/registration/data-verification");
+    regContext.updateStep(2);
+  };
+
+  return (
+    <>
+      <KfRegistrationHeader />
+      <View style={globalStyles.content}>
+        <View style={{ flexGrow: 1 }}>
+          <TileIcon icon="badge_lock" color="light-green" />
+          <KfText title="Pierwsze logowanie" type={1} />
+          <KfText
+            title="Wprowadź dane do logowania powiązane z Twoim kontem na KupFundusz.pl"
+            type={6}
+          />
+
+          <KfInput
+            keyboardType={"numeric"}
+            placeholder={"Wpisz numer klienta"}
+            label={"Numer klienta (8-cyfrowy)"}
+            onChangeText={function (s: string): {} {
+              throw new Error("Function not implemented.");
+            }}
+          />
+          <KfText
+            title="Nie pamiętam numeru klienta"
+            type={10}
+            otherStyles={{ marginBottom: verticalScale(26) }}
+          />
+          <KfInput
+            keyboardType={"numeric"}
+            placeholder={"Wpisz hasło"}
+            label={"Hasło"}
+            onChangeText={function (s: string): {} {
+              throw new Error("Function not implemented.");
+            }}
+          />
+          <KfText title="Nie pamiętam hasła" type={10} />
+        </View>
         <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignContent: "center",
-            justifyContent: "space-between",
-          }}
+          style={[globalStyles.buttonsContainer, { gap: verticalScale(22) }]}
         >
-          <KfText title="Pomoc i kontakt" type={7} />
-          <KfText title="Informacja prawna" type={7} />
+          <KfButton
+            title={"Dalej"}
+            type={KFButtonTypes.Gradient}
+            onPress={goToNextStep}
+            icon="arrow"
+          />
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignContent: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 6 }}
+            >
+              <AskSmall />
+              <KfText title="Pomoc i kontakt" type={7} />
+            </View>
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 6 }}
+            >
+              <InfoSmall />
+              <KfText title="Informacja prawna" type={7} />
+            </View>
+          </View>
         </View>
       </View>
-    </View>
+    </>
   );
 };
 

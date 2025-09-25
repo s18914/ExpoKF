@@ -20,7 +20,6 @@ export default function Layout() {
 
   return (
     <RegistrationContext.Provider value={{ step, updateStep }}>
-      <KfRegistrationHeader />
       <Slot />
     </RegistrationContext.Provider>
   );

@@ -12,7 +12,7 @@ const KfRegistrationHeader: FunctionComponent<Props> = () => {
   const registerCtx = useContext(RegistrationContext);
 
   if (registerCtx.step === 0) {
-    return null;
+    return <View style={{ height: 0 }}></View>;
   }
 
   return (

@@ -16,7 +16,7 @@ export const globalStyles = StyleSheet.create({
 
   content: {
     display: "flex",
-    height: "100%",
+    flex: 1,
     width: "100%",
     padding: horizontalScale(25),
     justifyContent: "space-between",
