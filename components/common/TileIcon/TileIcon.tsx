@@ -7,12 +7,17 @@ import BadgeLock from "../../../assets/icons/badge_lock.jsx";
 import Wallet from "../../../assets/icons/menu/wallet.jsx";
 import Tools from "../../../assets/icons/tools.jsx";
 import User from "../../../assets/icons/user.jsx";
+import Phone from "../../../assets/icons/telephone.jsx";
+import Ask from "../../../assets/icons/ask";
+import { verticalScale } from "../../../assets/styles/scaling";
 
 type IconName = keyof typeof iconComponents;
 
 interface TileIconProps {
   icon: IconName;
   color?: keyof typeof colors;
+  isSmall?: boolean;
+  additionalColor?: string;
 }
 
 const colors = {
@@ -30,11 +35,15 @@ const iconComponents = {
   wallet: Wallet,
   tools: Tools,
   user: User,
+  phone: Phone,
+  ask: Ask,
 };
 
 const TileIcon: FunctionComponent<TileIconProps> = ({
   icon,
   color = "default",
+  isSmall = false,
+  additionalColor,
 }) => {
   const bgColor = colors[color];
   const IconComponent = iconComponents[icon] || null;
@@ -47,6 +56,7 @@ const TileIcon: FunctionComponent<TileIconProps> = ({
           borderColor: bgColor,
         },
         style.tileIconBox,
+        isSmall && { width: verticalScale(55), height: verticalScale(55) },
       ]}
     >
       <Svg
@@ -63,11 +73,13 @@ const TileIcon: FunctionComponent<TileIconProps> = ({
         <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad)" />
       </Svg>
       {IconComponent && (
-        <IconComponent width={28} height={28} fill="#4ecf17ff" />
+        <IconComponent
+          width={isSmall ? verticalScale(26) : verticalScale(28)}
+          height={isSmall ? verticalScale(26) : verticalScale(28)}
+          fill={additionalColor ? additionalColor : "#4ecf17ff"}
+        />
       )}
     </View>
   );
 };
 export default TileIcon;
-
-//backgroundImage: `radial-gradient(${bgColor} 0%, rgba(255, 255, 255, 0%) 80%)`,

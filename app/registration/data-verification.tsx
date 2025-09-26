@@ -14,7 +14,7 @@ import KfRegistrationHeader from "../../components/composite/KfRegistrationHeade
 import Notify from "../../components/common/Notify/Notify";
 import SmsCodeInput from "../../components/common/CodeInput/CodeInput";
 import BottomDrawer from "../../components/common/BottomDrawer/BottomDrawer";
-import SmsCodeDrawer from "../../components/drawers/SmsCodeDarwer";
+import SmsCodeDrawer from "../../components/drawers/SmsCodeDrawer";
 
 const DataVerification = () => {
   const [visible, setVisible] = useState(false);

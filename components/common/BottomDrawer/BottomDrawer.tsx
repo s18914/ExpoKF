@@ -1,5 +1,13 @@
 import React from "react";
-import { Modal, View, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  Modal,
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  Pressable,
+} from "react-native";
+import { verticalScale } from "../../../assets/styles/scaling";
 
 interface BottomDrawerProps {
   visible: boolean;
@@ -23,7 +31,13 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({
       activeOpacity={1}
       onPress={onClose}
     />
-    <View style={styles.sheet}>{children}</View>
+    <View style={styles.sheet}>
+      <Pressable style={styles.close} onPress={onClose}>
+        <Image source={require("../../../assets/images/close.png")} />
+      </Pressable>
+
+      {children}
+    </View>
   </Modal>
 );
 
@@ -40,9 +54,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderTopLeftRadius: 18,
     borderTopRightRadius: 18,
-    padding: 24,
+    padding: verticalScale(24),
     minHeight: 320,
     elevation: 8,
+  },
+  close: {
+    position: "absolute",
+    top: verticalScale(16),
+    right: verticalScale(16),
   },
 });
 

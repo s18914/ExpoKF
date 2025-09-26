@@ -15,7 +15,7 @@ const style = StyleSheet.create({
     justifyContent: "center",
     minWidth: 50,
     overflow: "hidden",
-    marginTop: verticalScale(10),
+    //marginTop: verticalScale(10),
     marginBottom: verticalScale(15),
   },
 });

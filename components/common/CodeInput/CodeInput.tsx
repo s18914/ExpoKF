@@ -36,12 +36,14 @@ const SmsCodeInput: React.FC<SmsCodeInputProps> = ({
 
     // Move to next input
     if (text && idx < 5) {
+      //@ts-ignore
       inputs[idx + 1].current?.focus();
     }
   };
 
   const handleKeyPress = (e: any, idx: number) => {
     if (e.nativeEvent.key === "Backspace" && !value[idx] && idx > 0) {
+      //@ts-ignore
       inputs[idx - 1].current?.focus();
     }
   };
