@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Pressable, View } from "react-native";
 import KfText from "../../components/common/KfText/KfText";
 import KfInput from "../../components/common/KfInput/KfInput";
@@ -15,9 +15,16 @@ import Notify from "../../components/common/Notify/Notify";
 import SmsCodeInput from "../../components/common/CodeInput/CodeInput";
 import BottomDrawer from "../../components/common/BottomDrawer/BottomDrawer";
 import SmsCodeDrawer from "../../components/drawers/SmsCodeDrawer";
+import { RegistrationContext } from "./_layout";
 
 const DataVerification = () => {
   const [visible, setVisible] = useState(false);
+  const router = useRouter();
+  const regContext = useContext(RegistrationContext);
+  const goToNextStep = () => {
+    router.push("/registration/set-pin");
+    regContext.updateStep(3);
+  };
   return (
     <>
       <KfRegistrationHeader />
@@ -67,6 +74,7 @@ const DataVerification = () => {
             title={"Dalej"}
             type={KFButtonTypes.Gradient}
             icon="arrow"
+            onPress={goToNextStep}
           />
         </View>
       </View>
