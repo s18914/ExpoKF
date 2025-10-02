@@ -1,4 +1,3 @@
-import { useRouter } from "expo-router";
 import { useContext, useEffect } from "react";
 import { View, Text, StyleSheet, KeyboardTypeOptions } from "react-native";
 import KfText from "../../components/common/KfText/KfText";
@@ -16,11 +15,9 @@ import KfRegistrationHeader from "../../components/composite/KfRegistrationHeade
 import { RegistrationContext } from "./_layout";
 
 const Login = () => {
-  const router = useRouter();
   const regContext = useContext(RegistrationContext);
   const goToNextStep = () => {
-    router.push("/registration/data-verification");
-    regContext.updateStep(2);
+    regContext.goToNextStep();
   };
 
   return (

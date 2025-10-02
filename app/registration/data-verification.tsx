@@ -1,4 +1,3 @@
-import { useRouter } from "expo-router";
 import React, { useContext, useEffect, useState } from "react";
 import { Pressable, View } from "react-native";
 import KfText from "../../components/common/KfText/KfText";
@@ -19,11 +18,9 @@ import { RegistrationContext } from "./_layout";
 
 const DataVerification = () => {
   const [visible, setVisible] = useState(false);
-  const router = useRouter();
   const regContext = useContext(RegistrationContext);
   const goToNextStep = () => {
-    router.push("/registration/set-pin");
-    regContext.updateStep(3);
+    regContext.goToNextStep();
   };
   return (
     <>

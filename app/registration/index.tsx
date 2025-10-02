@@ -1,4 +1,3 @@
-import { useRouter } from "expo-router";
 import { View, StyleSheet, Image } from "react-native";
 import Svg, { Defs, RadialGradient, Rect, Stop } from "react-native-svg";
 import KfText from "../../components/common/KfText/KfText";
@@ -11,11 +10,9 @@ import { useContext } from "react";
 import { RegistrationContext } from "./_layout";
 
 const Hello = () => {
-  const router = useRouter();
   const regContext = useContext(RegistrationContext);
   const goToLogin = () => {
-    router.push("/registration/login");
-    regContext.updateStep(1);
+    regContext.goToStep(1);
   };
 
   return (

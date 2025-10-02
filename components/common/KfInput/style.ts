@@ -17,14 +17,19 @@ const style = StyleSheet.create({
     lineHeight: scaleFontSize(15),
   },
   input: {
-    paddingHorizontal: verticalScale(26),
-    paddingVertical: verticalScale(21),
+    padding: verticalScale(22),
     borderWidth: 1,
     borderColor: "rgb(192, 192, 192)",
     borderRadius: verticalScale(7),
-    fontFamily: "EuclidCircularR",
+    fontFamily: "EuclidCircularM",
     fontSize: scaleFontSize(20),
     width: "100%",
+    height: verticalScale(70),
+    //letterSpacing: scaleFontSize(4),
+  },
+  error: {
+    outlineColor: "rgba(238, 88, 88, 1)",
+    outlineWidth: 2,
   },
 });
 

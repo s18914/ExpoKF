@@ -21,4 +21,7 @@ export const globalStyles = StyleSheet.create({
     padding: horizontalScale(25),
     justifyContent: "space-between",
   },
+  error: {
+    color: "rgba(238, 88, 88, 1)",
+  },
 });

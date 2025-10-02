@@ -21,9 +21,7 @@ const KfRegistrationHeader: FunctionComponent<Props> = () => {
         {registerCtx.step !== 1 && (
           <BackButton
             style={style.arrow}
-            onPress={function (): void {
-              throw new Error("Function not implemented.");
-            }}
+            onPress={registerCtx.goToPreviousStep}
           />
         )}
 
@@ -32,7 +30,7 @@ const KfRegistrationHeader: FunctionComponent<Props> = () => {
           type={5}
         />
       </View>
-      <KfStatusBar step={registerCtx.step} />
+      <KfStatusBar />
     </>
   );
 };

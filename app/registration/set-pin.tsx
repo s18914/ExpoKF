@@ -18,7 +18,7 @@ const SetPin = () => {
       <KfRegistrationHeader />
       <View style={globalStyles.content}>
         <View style={{ flexGrow: 1 }}>
-          <TileIcon icon="user" color="light-green" />
+          <TileIcon icon="locker" color="light-green" />
           <KfText title="Ustaw kod PIN" type={1} />
           <KfText
             title="Kod PIN musi się składać z 6 cyfr i będzie służył do logowania do aplikacji."

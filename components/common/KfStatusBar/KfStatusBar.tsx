@@ -1,14 +1,15 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useContext } from "react";
 
 import style from "./style";
 import { LinearGradient } from "expo-linear-gradient";
+import { RegistrationContext } from "../../../app/registration/_layout";
 
 interface Props {
-  step: number;
 }
 
-const KfStatusBar: FunctionComponent<Props> = ({ step }) => {
-  const barWidth = (step ?? 1) * 20;
+const KfStatusBar: FunctionComponent<Props> = () => {
+  const registerCtx = useContext(RegistrationContext);
+  const barWidth = (registerCtx.step ?? 1) * 20;
 
   return (
     <LinearGradient

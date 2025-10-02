@@ -9,6 +9,7 @@ import Tools from "../../../assets/icons/tools.jsx";
 import User from "../../../assets/icons/user.jsx";
 import Phone from "../../../assets/icons/telephone.jsx";
 import Ask from "../../../assets/icons/ask";
+import Locker from "../../../assets/icons/locker";
 import { verticalScale } from "../../../assets/styles/scaling";
 
 type IconName = keyof typeof iconComponents;
@@ -37,6 +38,7 @@ const iconComponents = {
   user: User,
   phone: Phone,
   ask: Ask,
+  locker: Locker,
 };
 
 const TileIcon: FunctionComponent<TileIconProps> = ({
