@@ -8,6 +8,9 @@ interface SmsCodeInputProps {
   label: string;
   value: string;
   onChange: (code: string) => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
+  isActive?: boolean;
 }
 
 const GAP = horizontalScale(10);
@@ -17,6 +20,9 @@ const SmsCodeInput: React.FC<SmsCodeInputProps> = ({
   label,
   value,
   onChange,
+  onFocus,
+  onBlur,
+  isActive,
 }) => {
   const { width } = useWindowDimensions();
   const totalGaps = GAP * 5;
@@ -64,12 +70,15 @@ const SmsCodeInput: React.FC<SmsCodeInputProps> = ({
               styles.input,
               { width: inputWidth },
               value[idx] && styles.inputFilled,
+              isActive && styles.inputActive,
             ]}
             keyboardType="numeric"
             maxLength={1}
             value={value[idx] || ""}
             onChangeText={(text) => handleChange(text, idx)}
             onKeyPress={(e) => handleKeyPress(e, idx)}
+            onFocus={idx === 0 ? onFocus : undefined}
+            onBlur={idx === 5 ? onBlur : undefined}
             textAlign="center"
             returnKeyType="next"
           />

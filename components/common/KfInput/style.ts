@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
-import { scaleFontSize, verticalScale } from "../../../assets/styles/scaling";
+import { horizontalScale, scaleFontSize, verticalScale } from "../../../assets/styles/scaling";
 
 const style = StyleSheet.create({
   container: {
     display: "flex",
-    gap: 13,
+    gap: horizontalScale(13),
     width: "100%",
     alignItems: "flex-start",
-    paddingBottom: verticalScale(15),
+    paddingBottom: verticalScale(4),
   },
   inputContainer: {
     position: "relative",
@@ -40,9 +40,6 @@ const style = StyleSheet.create({
     paddingLeft:verticalScale(1),
     fontFamily: "EuclidCircularM",
   },
-  tooltipTextError: {
-    color: "#FFFFFF",
-  },
   label: {
     fontFamily: "EuclidCircularB",
     fontWeight: "400",
@@ -55,19 +52,25 @@ const style = StyleSheet.create({
     borderWidth: 1,
     borderColor: "rgb(192, 192, 192)",
     borderRadius: verticalScale(7),
-    fontFamily: "EuclidCircularM",
+    fontFamily: "EuclidCircularR",
     fontSize: scaleFontSize(20),
+    letterSpacing: -0.91,
     width: "100%",
     height: verticalScale(70),
-    paddingRight: verticalScale(80), // Space for icons
+    paddingRight: verticalScale(80),
   },
   inputWithText: {
-    letterSpacing: scaleFontSize(2), // Większe odstępy między znakami
+    letterSpacing: 4.09,
+    fontFamily: "EuclidCircularM",
   },
   inputError: {
     borderColor: "#EE5858",
     borderWidth: 2,
     color: "#EE5858",
+  },
+  inputActive: {
+    borderColor: "#4ECF17",
+    borderWidth: 2,
   },
   eyeIcon: {
     padding: 4,

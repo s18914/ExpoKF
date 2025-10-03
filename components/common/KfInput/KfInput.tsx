@@ -4,6 +4,7 @@ import style from "./style";
 import KfText from "../KfText/KfText";
 import Tooltip from "../Tooltip/Tooltip";
 import Eye from "../../../assets/icons/eye";
+import { verticalScale } from "../../../assets/styles/scaling";
 
 interface Props {
   keyboardType: KeyboardTypeOptions | undefined;
@@ -16,6 +17,9 @@ interface Props {
   hasError?: boolean;
   errorMessage?: string;
   value?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
+  isActive?: boolean;
 }
 
 const KfInput: FunctionComponent<Props> = ({ ...props }) => {
@@ -37,11 +41,13 @@ const KfInput: FunctionComponent<Props> = ({ ...props }) => {
   };
   
   return (
-    <View style={style.container}>
+    <View 
+    style={[style.container, !props.hasError && {paddingBottom: verticalScale(10)}]}
+    >
       <KfText 
         title={props.label} 
-        type={5} 
-        color={props.hasError ? "#EE5858" : undefined}
+        type={5}
+        otherStyles={{marginBottom: verticalScale(5),}}
       />
       
       <View style={style.inputContainer}>
@@ -50,12 +56,15 @@ const KfInput: FunctionComponent<Props> = ({ ...props }) => {
           style={[
             style.input,
             props.hasError && style.inputError,
-            value.length > 0 && style.inputWithText
+            value.length > 0 && style.inputWithText,
+            props.isActive && style.inputActive
           ]}
           value={value}
           secureTextEntry={isSecure}
           keyboardType={props.keyboardType}
           onChangeText={handleChangeText}
+          onFocus={props.onFocus}
+          onBlur={props.onBlur}
           placeholderTextColor={props.hasError ? "#EE5858" : "#C0C0C0"}
         />
         
@@ -67,8 +76,7 @@ const KfInput: FunctionComponent<Props> = ({ ...props }) => {
                 props.hasError && style.tooltipIconError
               ]}>
                 <Text style={[
-                  style.tooltipText, 
-                  props.hasError && style.tooltipTextError
+                  style.tooltipText
                 ]}>?</Text>
               </View>
             </Tooltip>
@@ -92,7 +100,7 @@ const KfInput: FunctionComponent<Props> = ({ ...props }) => {
       {props.hasError && props.errorMessage && (
         <KfText 
           title={props.errorMessage} 
-          type={6} 
+          type={5} 
           color="#EE5858"
           otherStyles={style.errorText}
         />

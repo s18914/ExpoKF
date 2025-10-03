@@ -21,6 +21,10 @@ const style = StyleSheet.create({
   inputFilled: {
     borderColor: "#4ecf17",
   },
+  inputActive: {
+    borderColor: "#4ECF17",
+    borderWidth: 2,
+  },
 });
 
 export default style;

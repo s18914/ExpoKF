@@ -18,6 +18,9 @@ import { RegistrationContext } from "./_layout";
 
 const DataVerification = () => {
   const [visible, setVisible] = useState(false);
+  const [pesel, setPesel] = useState("");
+  const [smsCode, setSmsCode] = useState("");
+  const [activeField, setActiveField] = useState<"pesel" | "sms" | null>(null);
   const regContext = useContext(RegistrationContext);
   const goToNextStep = () => {
     regContext.goToNextStep();
@@ -47,15 +50,20 @@ const DataVerification = () => {
             keyboardType={"numeric"}
             placeholder={"Podaj numer PESEL"}
             label={"Numer PESEL"}
-            onChangeText={function (s: string): {} {
-              throw new Error("Function not implemented.");
-            }}
+            value={pesel}
+            onChangeText={setPesel}
+            onFocus={() => setActiveField("pesel")}
+            onBlur={() => setActiveField(null)}
+            isActive={activeField === "pesel"}
           />
 
           <SmsCodeInput
             label={"Kod z wiadomości SMS"}
-            value={""}
-            onChange={() => {}}
+            value={smsCode}
+            onChange={setSmsCode}
+            onFocus={() => setActiveField("sms")}
+            onBlur={() => setActiveField(null)}
+            isActive={activeField === "sms"}
           />
 
           <Pressable onPress={() => setVisible(true)}>
