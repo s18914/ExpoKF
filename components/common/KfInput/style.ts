@@ -9,6 +9,40 @@ const style = StyleSheet.create({
     alignItems: "flex-start",
     paddingBottom: verticalScale(15),
   },
+  inputContainer: {
+    position: "relative",
+    width: "100%",
+  },
+  rightIconsContainer: {
+    position: "absolute",
+    right: verticalScale(20),
+    top: "50%",
+    transform: [{ translateY: -12 }],
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  tooltipIcon: {
+    width: verticalScale(25),
+    height: verticalScale(25),
+    borderRadius: verticalScale(25),
+    borderColor: "rgb(192, 192, 192)",
+    borderWidth: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  tooltipIconError: {
+    backgroundColor: "#EE5858",
+  },
+  tooltipText: {
+    fontSize: scaleFontSize(18),
+    color: "#000000",
+    paddingLeft:verticalScale(1),
+    fontFamily: "EuclidCircularM",
+  },
+  tooltipTextError: {
+    color: "#FFFFFF",
+  },
   label: {
     fontFamily: "EuclidCircularB",
     fontWeight: "400",
@@ -25,11 +59,25 @@ const style = StyleSheet.create({
     fontSize: scaleFontSize(20),
     width: "100%",
     height: verticalScale(70),
-    //letterSpacing: scaleFontSize(4),
+    paddingRight: verticalScale(80), // Space for icons
+  },
+  inputWithText: {
+    letterSpacing: scaleFontSize(2), // Większe odstępy między znakami
+  },
+  inputError: {
+    borderColor: "#EE5858",
+    borderWidth: 2,
+    color: "#EE5858",
+  },
+  eyeIcon: {
+    padding: 4,
+  },
+  errorText: {
+    marginTop: verticalScale(5),
   },
   error: {
-    outlineColor: "rgba(238, 88, 88, 1)",
-    outlineWidth: 2,
+    borderColor: "rgba(238, 88, 88, 1)",
+    borderWidth: 2,
   },
 });
 

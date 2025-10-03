@@ -1,4 +1,3 @@
-// Mapowanie ścieżek rejestracji do kroków
 export const REGISTRATION_STEPS = {
   '/registration': 0,
   '/registration/login': 1,
@@ -6,7 +5,6 @@ export const REGISTRATION_STEPS = {
   '/registration/set-pin': 3,
 } as const;
 
-// Odwrotne mapowanie - z kroku do ścieżki
 export const STEP_TO_PATH = {
   0: '/registration',
   1: '/registration/login', 
