@@ -12,7 +12,10 @@ import KfRegistrationHeader from "../../components/composite/KfRegistrationHeade
 import CodeInput from "../../components/common/CodeInput/CodeInput";
 
 const SetPin = () => {
-  const [visible, setVisible] = useState(false);
+  const [pin, setPin] = useState("");
+  const [pin2, setPin2] = useState("");
+  const [activeField, setActiveField] = useState<"pin" | "pin2" | null>(null);
+
   return (
     <>
       <KfRegistrationHeader />
@@ -26,12 +29,22 @@ const SetPin = () => {
           />
 
           <CodeInput
-            label={"Kod PIN (6 cyfr)"}
-            value={""}
-            onChange={() => {}}
+            label="Kod PIN (6 cyfr)"
+            value={pin}
+            onChange={setPin}
+            onFocus={() => setActiveField("pin")}
+            onBlur={() => setActiveField(null)}
+            isActive={activeField === "pin"}
           />
 
-          <CodeInput label={"Powtórz kod PIN"} value={""} onChange={() => {}} />
+          <CodeInput
+            label="Powtórz kod PIN"
+            value={pin2}
+            onChange={setPin2}
+            onFocus={() => setActiveField("pin2")}
+            onBlur={() => setActiveField(null)}
+            isActive={activeField === "pin2"}
+          />
         </View>
         <View style={[globalStyles.buttonsContainer]}>
           <KfButton

@@ -1,11 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  KeyboardTypeOptions,
-  ScrollView,
-} from "react-native";
+import { View } from "react-native";
 import KfText from "../../components/common/KfText/KfText";
 import KfInput from "../../components/common/KfInput/KfInput";
 import { globalStyles } from "../../assets/styles/globalStyles";
@@ -25,6 +19,7 @@ const Login = () => {
   const [clientNumber, setClientNumber] = useState("");
   const [password, setPassword] = useState("");
   const [hasError, setHasError] = useState(false);
+  const [bigRegistrationInactive, setBigRegistrationInactive] = useState(true);
 
   const goToNextStep = () => {
     if (password.length < 6) {

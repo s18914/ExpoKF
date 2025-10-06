@@ -2,7 +2,7 @@ import { Slot } from "expo-router";
 import { createContext, useEffect } from "react";
 import { BackHandler, ScrollView } from "react-native";
 import KfRegistrationHeader from "../../components/composite/KfRegistrationHeader/KfRegistrationHeader";
-import { useRegistrationStep } from "./useRegistrationStep";
+import useRegistrationStep from "./useRegistrationStep";
 import { RegistrationStep } from "./registrationSteps";
 
 export type RegistrationContextModel = {

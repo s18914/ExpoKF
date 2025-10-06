@@ -1,6 +1,6 @@
-import Svg, { Path } from 'react-native-svg';
-const SvgComponent = props => (
-  <Svg xmlns="http://www.w3.org/2000/svg" width={93} height={93} {...props}>
+import Svg, { Path } from "react-native-svg";
+const SvgComponent = (props) => (
+  <Svg width={93} height={93} viewBox="0 0 93 93" {...props}>
     <Path
       fill="none"
       stroke="#4ECF17"

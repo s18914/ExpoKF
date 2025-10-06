@@ -1,15 +1,11 @@
 import React, { FunctionComponent } from "react";
 import { View, Text } from "react-native";
 import style from "./style";
-import RadialGradient from "react-native-radial-gradient";
-import {
-  horizontalScale,
-  scaleFontSize,
-  verticalScale,
-} from "../../../assets/styles/scaling";
+import Svg, { Defs, RadialGradient, Rect, Stop } from "react-native-svg";
+import { verticalScale } from "../../../assets/styles/scaling";
 import Header from "../../common/KfText/KfText";
 import KfButton, { KFButtonTypes } from "../../common/KfButton/KfButton";
-import FaceId from "../../../assets/icons/fingerprint";
+import UserEdit from "../../../assets/icons/user_edit";
 import KfRegistrationHeader from "../KfRegistrationHeader/KfRegistrationHeader";
 
 interface Props {
@@ -18,6 +14,8 @@ interface Props {
   title3?: string;
   icon?: string;
   color?: GradientColor;
+  button1: string;
+  button2?: string;
 }
 
 export enum GradientColor {
@@ -28,50 +26,76 @@ export enum GradientColor {
 }
 
 const KfFeatureCard: FunctionComponent<Props> = ({ title = "", ...props }) => {
-  const getGradientColors = () => {
+  const getGradientColor = () => {
     switch (props.color) {
       case GradientColor.Green:
-        return ["rgba(78, 207, 23, 0.25)", "rgba(255, 255, 255, 1)"];
+        return "rgba(78, 207, 23, 0.25)";
       case GradientColor.Yellow:
-        return ["rgba(240, 193, 61, 0.25)", "rgba(255, 255, 255, 1)"];
+        return "rgba(240, 193, 61, 0.25)";
       case GradientColor.Violet:
-        return ["rgba(116, 67, 255, 0.20)", "rgba(255, 255, 255, 1)"];
+        return "rgba(116, 67, 255, 0.20)";
       default:
-        return ["rgba(97, 97, 97, 0.25)", "rgba(255, 255, 255, 1)"];
+        return "rgba(97, 97, 97, 0.25)";
     }
   };
-  const gradientColors = getGradientColors();
+  const gradientColor = getGradientColor();
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <KfRegistrationHeader />
       <View style={style.container}>
         <View style={style.background}>
-          <RadialGradient
-            style={style.gradient}
-            colors={gradientColors}
-            stops={[0, 1]}
-            center={[150, 150]}
-            radius={150}
-          ></RadialGradient>
-          <FaceId
+          <Svg
+            width="300"
+            height="300"
+            style={{ position: "absolute", opacity: 0.5 }}
+          >
+            <Defs>
+              <RadialGradient
+                id="featureCardGradient"
+                cx={"50%"}
+                cy={"50%"}
+                r={"50%"}
+              >
+                <Stop offset="0" stopColor={gradientColor} />
+                <Stop offset="1" stopColor="rgba(255, 255, 255, 1)" />
+              </RadialGradient>
+            </Defs>
+            <Rect
+              x="0"
+              y="0"
+              width="100%"
+              height="100%"
+              fill="url(#featureCardGradient)"
+            />
+          </Svg>
+          <UserEdit
             style={style.icon}
             width={verticalScale(90)}
             height={verticalScale(90)}
             fill="#000"
           />
         </View>
-        <View style={style.content}>
-          <View style={style.headers}>
-            <Header title={title} />
-            {props.title2 && <Header title={props.title2} type={5} />}
-            {props.title3 && <Header title={props.title3} type={5} />}
-          </View>
-          <View style={style.buttonsContainer}>
-            <KfButton title={"Włącz Face ID"} type={KFButtonTypes.Gradient} />
-            <KfButton title={"Nie teraz"} type={KFButtonTypes.Outlined} />
-          </View>
+        <View style={style.headers}>
+          <Header title={title} isTextCenter={true} />
+          {props.title2 && (
+            <Header title={props.title2} isTextCenter={true} type={5} />
+          )}
+          {props.title3 && (
+            <Header
+              title={props.title3}
+              isTextCenter={true}
+              type={5}
+              otherStyles={{ paddingTop: verticalScale(20) }}
+            />
+          )}
         </View>
+        {/* <View style={style.buttonsContainer}>
+            <KfButton title={props.button1} type={KFButtonTypes.Gradient} />
+            {props.button2 && (
+              <KfButton title={props.button2} type={KFButtonTypes.Outlined} />
+            )}
+          </View> */}
       </View>
     </View>
   );

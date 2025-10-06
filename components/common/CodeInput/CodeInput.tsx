@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   View,
   TextInput,
@@ -13,8 +13,8 @@ interface CodeInputProps {
   label: string;
   value: string;
   onChange: (code: string) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
+  onFocus: () => void;
+  onBlur: () => void;
   isActive?: boolean;
 }
 
@@ -74,56 +74,59 @@ const CodeInput: React.FC<CodeInputProps> = ({
     }
   };
 
+  const onInputFocus = (idx: number) => {
+    if (!isActive) {
+      onFocus && onFocus();
+    }
+    if (activeIndex === undefined) {
+      setActiveIndex(0);
+      setTimeout(() => {
+        //@ts-ignore
+        inputs[0].current?.focus();
+      }, 50);
+    } else if (activeIndex !== idx) {
+      setActiveIndex(activeIndex);
+      setTimeout(() => {
+        //@ts-ignore
+        inputs[activeIndex].current?.focus();
+      }, 50);
+    }
+  };
+
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        if (!isActive && activeIndex === undefined) {
-          console.log("RESET INDEX");
-          setActiveIndex(0);
-          setTimeout(() => {
-            //@ts-ignore
-            inputs[0].current?.focus();
-          }, 50);
-          onFocus && onFocus();
-        }
-      }}
-    >
-      <View>
-        <KfText
-          title={label}
-          type={5}
-          otherStyles={{ paddingTop: verticalScale(20) }}
-        />
-        <View style={styles.container}>
-          {Array.from({ length: 6 }).map((_, idx) => (
-            <TextInput
-              key={idx}
-              ref={inputs[idx]}
-              style={[
-                styles.input,
-                { width: inputWidth },
-                activeIndex === idx && styles.inputActive,
-              ]}
-              keyboardType="numeric"
-              maxLength={1}
-              editable={idx === activeIndex}
-              value={value[idx] || ""}
-              onChangeText={(text) => handleChange(text, idx)}
-              onKeyPress={({ nativeEvent }) => {
-                console.log(nativeEvent.key);
-                if (nativeEvent.key === "Backspace" && !value[idx]) {
-                  handleChange("", idx);
-                }
-              }}
-              onFocus={idx === 0 ? onFocus : undefined}
-              onBlur={idx === 5 ? onBlur : undefined}
-              textAlign="center"
-              returnKeyType="next"
-            />
-          ))}
-        </View>
+    <View>
+      <KfText
+        title={label}
+        type={5}
+        otherStyles={{ paddingTop: verticalScale(20) }}
+      />
+      <View style={styles.container}>
+        {Array.from({ length: 6 }).map((_, idx) => (
+          <TextInput
+            key={idx}
+            ref={inputs[idx]}
+            style={[
+              styles.input,
+              { width: inputWidth },
+              isActive && activeIndex === idx && styles.inputActive,
+            ]}
+            keyboardType="numeric"
+            maxLength={1}
+            value={value[idx] || ""}
+            onChangeText={(text) => handleChange(text, idx)}
+            onKeyPress={({ nativeEvent }) => {
+              if (nativeEvent.key === "Backspace" && !value[idx]) {
+                handleChange("", idx);
+              }
+            }}
+            onFocus={() => onInputFocus(idx)}
+            onBlur={idx === 5 ? onBlur : undefined}
+            textAlign="center"
+            returnKeyType="next"
+          />
+        ))}
       </View>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 

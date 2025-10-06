@@ -8,12 +8,12 @@ import {
 const style = StyleSheet.create({
   container: {
     width: "100%",
-    height: verticalScale(800),
-    display: "flex",
-
+    height: "100%",
+    flex: 1,
     padding: verticalScale(30),
-    justifyContent: "flex-end",
-    alignItems: "flex-start",
+    display: "flex",
+    alignItems: "flex-end",
+    justifyContent: "center",
   },
   background: {
     width: "100%",
@@ -32,19 +32,14 @@ const style = StyleSheet.create({
     width: 300,
     height: 300,
   },
-  content: {
-    display: "flex",
-    gap: verticalScale(10),
-    height: "60%",
-    alignSelf: "flex-end",
-    justifyContent: "space-between",
-  },
+
   headers: {
     display: "flex",
-    gap: verticalScale(10),
+    gap: verticalScale(3),
     height: "auto",
     alignSelf: "flex-end",
     justifyContent: "space-between",
+    paddingTop: "35%",
   },
   buttonsContainer: {
     display: "flex",

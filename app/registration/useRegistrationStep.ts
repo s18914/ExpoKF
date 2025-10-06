@@ -1,8 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useRouter, usePathname } from 'expo-router';
-import { getStepFromPath, getPathFromStep, isRegistrationPath, getMaxStep, RegistrationStep } from './registrationSteps';
+import { useEffect, useState } from "react";
+import { useRouter, usePathname } from "expo-router";
+import {
+  getStepFromPath,
+  getPathFromStep,
+  isRegistrationPath,
+  getMaxStep,
+  RegistrationStep,
+} from "./registrationSteps";
 
-export const useRegistrationStep = () => {
+const useRegistrationStep = () => {
   const router = useRouter();
   const pathname = usePathname();
   const [step, setStep] = useState<RegistrationStep>(0);
@@ -40,3 +46,5 @@ export const useRegistrationStep = () => {
     isRegistrationPath: isRegistrationPath(pathname),
   };
 };
+
+export default useRegistrationStep;
