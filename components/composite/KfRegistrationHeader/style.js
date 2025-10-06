@@ -5,7 +5,7 @@ import {
   verticalScale,
 } from "../../../assets/styles/scaling";
 
-const style = StyleSheet.create({
+const headerStyle = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "row",
@@ -22,4 +22,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default style;
+export default headerStyle;

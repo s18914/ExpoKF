@@ -13,15 +13,20 @@ import AskSmall from "../../assets/icons/ask_small.jsx";
 import InfoSmall from "../../assets/icons/info.jsx";
 import KfRegistrationHeader from "../../components/composite/KfRegistrationHeader/KfRegistrationHeader";
 import { RegistrationContext } from "./_layout";
+import { useRouter } from "expo-router";
 
 const Login = () => {
   const regContext = useContext(RegistrationContext);
+  const router = useRouter();
   const [clientNumber, setClientNumber] = useState("");
   const [password, setPassword] = useState("");
   const [hasError, setHasError] = useState(false);
-  const [bigRegistrationInactive, setBigRegistrationInactive] = useState(true);
 
   const goToNextStep = () => {
+    if (clientNumber.length == 1) {
+      router.push("/registration/complete-big-registration");
+      return;
+    }
     if (password.length < 6) {
       //setHasError(true);
       //return;
