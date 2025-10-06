@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { StatusBar, StyleSheet } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  StatusBar,
+  StyleSheet,
+} from "react-native";
 import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
@@ -37,9 +42,14 @@ export default function Layout() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      <Slot />
-      {/* <Footer /> */}
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+      >
+        <StatusBar barStyle="dark-content" />
+        <Slot />
+        {/* <Footer /> */}
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }

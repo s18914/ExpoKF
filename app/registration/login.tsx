@@ -1,5 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { View, Text, StyleSheet, KeyboardTypeOptions } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  KeyboardTypeOptions,
+  ScrollView,
+} from "react-native";
 import KfText from "../../components/common/KfText/KfText";
 import KfInput from "../../components/common/KfInput/KfInput";
 import { globalStyles } from "../../assets/styles/globalStyles";
@@ -19,12 +25,11 @@ const Login = () => {
   const [clientNumber, setClientNumber] = useState("");
   const [password, setPassword] = useState("");
   const [hasError, setHasError] = useState(false);
-  
+
   const goToNextStep = () => {
-    // Mockup błędu - jeśli hasło jest krótsze niż 6 znaków
     if (password.length < 6) {
-      setHasError(true);
-      return;
+      //setHasError(true);
+      //return;
     }
     setHasError(false);
     regContext.goToNextStep();
@@ -33,6 +38,7 @@ const Login = () => {
   return (
     <>
       <KfRegistrationHeader />
+
       <View style={globalStyles.content}>
         <View style={{ flexGrow: 1 }}>
           <TileIcon icon="badge_lock" color="light-green" />
@@ -64,7 +70,9 @@ const Login = () => {
             secureTextEntry={true}
             showPasswordToggle={true}
             hasError={hasError}
-            errorMessage={hasError ? "Hasło musi mieć co najmniej 6 znaków" : undefined}
+            errorMessage={
+              hasError ? "Hasło musi mieć co najmniej 6 znaków" : undefined
+            }
           />
           <KfText title="Nie pamiętam hasła" type={10} />
         </View>
@@ -103,16 +111,5 @@ const Login = () => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 20,
-  },
-});
 
 export default Login;

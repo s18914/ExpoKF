@@ -18,9 +18,6 @@ const style = StyleSheet.create({
     fontWeight: "bold",
     color: "#1F2225",
   },
-  inputFilled: {
-    borderColor: "#4ecf17",
-  },
   inputActive: {
     borderColor: "#4ECF17",
     borderWidth: 2,

@@ -1,6 +1,6 @@
 import { Slot } from "expo-router";
 import { createContext, useEffect } from "react";
-import { BackHandler } from "react-native";
+import { BackHandler, ScrollView } from "react-native";
 import KfRegistrationHeader from "../../components/composite/KfRegistrationHeader/KfRegistrationHeader";
 import { useRegistrationStep } from "./useRegistrationStep";
 import { RegistrationStep } from "./registrationSteps";
@@ -17,26 +17,38 @@ export const RegistrationContext = createContext<RegistrationContextModel>(
 );
 
 export default function Layout() {
-  const { step, goToStep, goToPreviousStep, goToNextStep, isRegistrationPath } = useRegistrationStep();
+  const { step, goToStep, goToPreviousStep, goToNextStep, isRegistrationPath } =
+    useRegistrationStep();
 
   // Obsługa gestu wstecz w telefonie (Android)
   useEffect(() => {
     if (!isRegistrationPath) return;
 
-    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-      if (step > 0) {
-        goToPreviousStep();
-        return true; // Prevent default behavior
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      () => {
+        if (step > 0) {
+          goToPreviousStep();
+          return true; // Prevent default behavior
+        }
+        return false; // Allow default behavior (exit app)
       }
-      return false; // Allow default behavior (exit app)
-    });
+    );
 
     return () => backHandler.remove();
   }, [step, isRegistrationPath, goToPreviousStep]);
 
   return (
-    <RegistrationContext.Provider value={{ step, goToStep, goToPreviousStep, goToNextStep }}>
-      <Slot />
-    </RegistrationContext.Provider>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="on-drag"
+      contentContainerStyle={{ flexGrow: 1 }}
+    >
+      <RegistrationContext.Provider
+        value={{ step, goToStep, goToPreviousStep, goToNextStep }}
+      >
+        <Slot />
+      </RegistrationContext.Provider>
+    </ScrollView>
   );
 }

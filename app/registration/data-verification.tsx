@@ -11,7 +11,7 @@ import KfButton, {
 
 import KfRegistrationHeader from "../../components/composite/KfRegistrationHeader/KfRegistrationHeader";
 import Notify from "../../components/common/Notify/Notify";
-import SmsCodeInput from "../../components/common/CodeInput/CodeInput";
+import CodeInput from "../../components/common/CodeInput/CodeInput";
 import BottomDrawer from "../../components/common/BottomDrawer/BottomDrawer";
 import SmsCodeDrawer from "../../components/drawers/SmsCodeDrawer";
 import { RegistrationContext } from "./_layout";
@@ -57,7 +57,7 @@ const DataVerification = () => {
             isActive={activeField === "pesel"}
           />
 
-          <SmsCodeInput
+          <CodeInput
             label={"Kod z wiadomości SMS"}
             value={smsCode}
             onChange={setSmsCode}

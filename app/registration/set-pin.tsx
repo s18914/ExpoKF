@@ -9,7 +9,7 @@ import KfButton, {
 } from "../../components/common/KfButton/KfButton";
 
 import KfRegistrationHeader from "../../components/composite/KfRegistrationHeader/KfRegistrationHeader";
-import SmsCodeInput from "../../components/common/CodeInput/CodeInput";
+import CodeInput from "../../components/common/CodeInput/CodeInput";
 
 const SetPin = () => {
   const [visible, setVisible] = useState(false);
@@ -25,17 +25,13 @@ const SetPin = () => {
             type={6}
           />
 
-          <SmsCodeInput
+          <CodeInput
             label={"Kod PIN (6 cyfr)"}
             value={""}
             onChange={() => {}}
           />
 
-          <SmsCodeInput
-            label={"Powtórz kod PIN"}
-            value={""}
-            onChange={() => {}}
-          />
+          <CodeInput label={"Powtórz kod PIN"} value={""} onChange={() => {}} />
         </View>
         <View style={[globalStyles.buttonsContainer]}>
           <KfButton
