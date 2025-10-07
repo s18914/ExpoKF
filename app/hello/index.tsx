@@ -6,24 +6,23 @@ import KfButton, {
   KFButtonTypes,
 } from "../../components/common/KfButton/KfButton";
 import { globalStyles } from "../../assets/styles/globalStyles";
-import { useContext } from "react";
-import { RegistrationContext } from "./_layout";
+import { useRouter } from "expo-router";
 
 const Hello = () => {
-  const regContext = useContext(RegistrationContext);
+  const router = useRouter();
   const goToLogin = () => {
-    regContext.goToStep(1);
+    router.push("/registration/login");
   };
 
   return (
     <View style={globalStyles.container}>
       <Svg
-        width="1200"
-        height="2500"
-        style={{ position: "absolute", transform: [{ rotate: "-56deg" }] }}
+        width="1300"
+        height="2000"
+        style={{ position: "absolute", transform: [{ rotate: "-54deg" }] }}
       >
         <Defs>
-          <RadialGradient id="grad" cx="74%" cy="38%" r="44%" fx="75%" fy="50%">
+          <RadialGradient id="grad" cx="73%" cy="42%" r="37%" fx="75%" fy="50%">
             <Stop offset="0" stopColor="rgba(255, 255, 255, 1)" />
             <Stop offset="0.3" stopColor="rgba(255, 255, 255, 1)" />
             <Stop offset="0.35" stopColor="rgba(228, 255, 199, 1)" />
@@ -39,16 +38,29 @@ const Hello = () => {
             <Stop offset="1" stopColor="rgba(5, 41, 30, 1)" />
           </RadialGradient>
         </Defs>
-        <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad)" />
+        <Rect x="0" y="-40" width="100%" height="100%" fill="url(#grad)" />
       </Svg>
-      <Image
-        source={require("../../assets/images/KF_Logo3D.png")}
-        style={styles.logo3D}
-      />
-      <Image
-        source={require("../../assets/images/spark.png")}
-        style={styles.spark}
-      />
+      <View
+        style={{
+          width: 1300,
+          height: 2000,
+          position: "absolute",
+          transform: [{ rotate: "-54deg" }],
+        }}
+      >
+        <Image
+          source={require("../../assets/images/KF_Logo3D.png")}
+          style={[
+            styles.logo3D,
+            { transform: [{ rotate: "54deg" }, { scale: 0.9 }] },
+          ]}
+        />
+        <Image
+          source={require("../../assets/images/spark.png")}
+          style={[styles.spark, { transform: [{ rotate: "54deg" }] }]}
+        />
+      </View>
+
       <View style={styles.content}>
         <Image
           source={require("../../assets/images/splash-icon.png")}
@@ -94,13 +106,13 @@ const styles = StyleSheet.create({
   },
   logo3D: {
     position: "absolute",
-    top: verticalScale(60),
-    left: horizontalScale(0),
+    top: 670,
+    left: 590,
   },
   spark: {
     position: "absolute",
-    top: verticalScale(-180),
-    left: horizontalScale(-300),
+    top: 410,
+    left: 442,
   },
   content: {
     display: "flex",

@@ -23,14 +23,14 @@ const CompleteBigRegistration = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={headerStyle.container}>
+      {/* <View style={headerStyle.container}>
         <BackButton
           style={headerStyle.arrow}
           onPress={() => goToPreviousStep()}
         />
         <KfText title="Aktywacja aplikacji (krok 1 z 5)" type={5} />
       </View>
-      <KfStatusBar />
+      <KfStatusBar /> */}
       <KfFeatureCard
         title="Dokończ rejestrację&nbsp;konta"
         title2="Posiadasz login i hasło, ale Twoje konto na KupFundusz.pl nie jest w pełni kompletne."

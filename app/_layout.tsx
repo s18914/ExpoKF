@@ -21,8 +21,8 @@ SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
   setStatusBarBackgroundColor("#ffffff", false);
-  setStatusBarStyle("auto", false);
-  setStatusBarTranslucent(true); //na telefonie false, na emulatorze true
+  setStatusBarStyle("light", false);
+  setStatusBarTranslucent(false); //na telefonie false, na emulatorze true
   const [fontsLoaded] = useFonts({
     EuclidCircularR: require("../assets/fonts/EuclidCircularB-Regular.ttf"),
     EuclidCircularM: require("../assets/fonts/EuclidCircularB-Medium.ttf"),
@@ -42,11 +42,11 @@ export default function Layout() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" />
       <KeyboardAvoidingView
-        style={{ flex: 1 }}
+        style={{ flex: 1, height: "100%" }}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
-        <StatusBar barStyle="dark-content" />
         <Slot />
         {/* <Footer /> */}
       </KeyboardAvoidingView>

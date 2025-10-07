@@ -27,7 +27,7 @@ export default function Layout() {
     const backHandler = BackHandler.addEventListener(
       "hardwareBackPress",
       () => {
-        if (step > 0) {
+        if (step > 1) {
           goToPreviousStep();
           return true; // Prevent default behavior
         }

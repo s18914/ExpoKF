@@ -11,10 +11,6 @@ interface Props {}
 const KfRegistrationHeader: FunctionComponent<Props> = () => {
   const registerCtx = useContext(RegistrationContext);
 
-  if (registerCtx.step === 0) {
-    return <View style={{ height: 0 }}></View>;
-  }
-
   return (
     <>
       <View style={style.container}>

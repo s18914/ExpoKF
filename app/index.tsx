@@ -8,7 +8,7 @@ const Home = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      router.push("/registration");
+      router.push("/hello");
     }
   }, []),
     (<View style={globalStyles.container}></View>);

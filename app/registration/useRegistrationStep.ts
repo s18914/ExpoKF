@@ -11,7 +11,7 @@ import {
 const useRegistrationStep = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const [step, setStep] = useState<RegistrationStep>(0);
+  const [step, setStep] = useState<RegistrationStep>(1);
 
   useEffect(() => {
     if (isRegistrationPath(pathname)) {
