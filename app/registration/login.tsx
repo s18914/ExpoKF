@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { View } from "react-native";
+import { Keyboard, Platform, View } from "react-native";
 import KfText from "../../components/common/KfText/KfText";
 import KfInput from "../../components/common/KfInput/KfInput";
 import { globalStyles } from "../../assets/styles/globalStyles";
@@ -21,6 +21,26 @@ const Login = () => {
   const [clientNumber, setClientNumber] = useState("");
   const [password, setPassword] = useState("");
   const [hasError, setHasError] = useState(false);
+
+  //scroll button
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
+  const [isLastInputFocused, setIsLastInputFocused] = useState(false);
+
+  useEffect(() => {
+    const showSub = Keyboard.addListener(
+      Platform.OS === "ios" ? "keyboardWillShow" : "keyboardDidShow",
+      (e) => setKeyboardHeight(e.endCoordinates.height)
+    );
+    const hideSub = Keyboard.addListener(
+      Platform.OS === "ios" ? "keyboardWillHide" : "keyboardDidHide",
+      () => setKeyboardHeight(0)
+    );
+
+    return () => {
+      showSub.remove();
+      hideSub.remove();
+    };
+  }, []);
 
   const goToNextStep = () => {
     if (clientNumber.length == 1) {
@@ -55,6 +75,7 @@ const Login = () => {
             value={clientNumber}
             onChangeText={setClientNumber}
             tooltipMessage="Numer klienta znajdziesz w umowie lub na stronie KupFundusz.pl w sekcji 'Moje konto'."
+            onFocus={() => setIsLastInputFocused(false)}
           />
           <KfText
             title="Nie pamiętam numeru klienta"
@@ -70,6 +91,7 @@ const Login = () => {
             secureTextEntry={true}
             showPasswordToggle={true}
             hasError={hasError}
+            onFocus={() => setIsLastInputFocused(true)}
             errorMessage={
               hasError ? "Hasło musi mieć co najmniej 6 znaków" : undefined
             }
@@ -77,7 +99,11 @@ const Login = () => {
           <KfText title="Nie pamiętam hasła" type={10} />
         </View>
         <View
-          style={[globalStyles.buttonsContainer, { gap: verticalScale(22) }]}
+          style={[
+            globalStyles.buttonsContainer,
+            { gap: verticalScale(22) },
+            isLastInputFocused && { marginBottom: keyboardHeight },
+          ]}
         >
           <KfButton
             title={"Dalej"}

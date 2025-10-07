@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
-import {
-  KeyboardAvoidingView,
-  Platform,
-  StatusBar,
-  StyleSheet,
-} from "react-native";
+import { KeyboardAvoidingView, Platform, StyleSheet, Text } from "react-native";
 import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Footer from "./Footer";
 import {
+  StatusBar,
   setStatusBarBackgroundColor,
   setStatusBarStyle,
   setStatusBarTranslucent,
@@ -20,9 +16,9 @@ import {
 SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
-  setStatusBarBackgroundColor("#ffffff", false);
-  setStatusBarStyle("light", false);
-  setStatusBarTranslucent(false); //na telefonie false, na emulatorze true
+  // setStatusBarBackgroundColor("#ffffff", false);
+  // setStatusBarStyle("light", false);
+  // setStatusBarTranslucent(false); //na telefonie false, na emulatorze true
   const [fontsLoaded] = useFonts({
     EuclidCircularR: require("../assets/fonts/EuclidCircularB-Regular.ttf"),
     EuclidCircularM: require("../assets/fonts/EuclidCircularB-Medium.ttf"),
@@ -42,7 +38,7 @@ export default function Layout() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar style="light" hidden={true} />
       <KeyboardAvoidingView
         style={{ flex: 1, height: "100%" }}
         behavior={Platform.OS === "ios" ? "padding" : undefined}

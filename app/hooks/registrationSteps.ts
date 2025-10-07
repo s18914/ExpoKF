@@ -2,12 +2,16 @@ export const REGISTRATION_STEPS = {
   "/registration/login": 1,
   "/registration/data-verification": 2,
   "/registration/set-pin": 3,
+  "/registration/set-biometry": 4,
+  "/registration/set-transaction-confirmation": 5,
 } as const;
 
 export const STEP_TO_PATH = {
   1: "/registration/login",
   2: "/registration/data-verification",
   3: "/registration/set-pin",
+  4: "/registration/set-biometry",
+  5: "/registration/set-transaction-confirmation",
 } as const;
 
 export type RegistrationPath = keyof typeof REGISTRATION_STEPS;

@@ -14,8 +14,6 @@ interface Props {
   title3?: string;
   icon?: string;
   color?: GradientColor;
-  button1: string;
-  button2?: string;
 }
 
 export enum GradientColor {

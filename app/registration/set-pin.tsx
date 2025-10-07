@@ -1,5 +1,4 @@
-import { useRouter } from "expo-router";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { View } from "react-native";
 import KfText from "../../components/common/KfText/KfText";
 import { globalStyles } from "../../assets/styles/globalStyles";
@@ -10,8 +9,10 @@ import KfButton, {
 
 import KfRegistrationHeader from "../../components/composite/KfRegistrationHeader/KfRegistrationHeader";
 import CodeInput from "../../components/common/CodeInput/CodeInput";
+import { RegistrationContext } from "./_layout";
 
 const SetPin = () => {
+  const regContext = useContext(RegistrationContext);
   const [pin, setPin] = useState("");
   const [pin2, setPin2] = useState("");
   const [activeField, setActiveField] = useState<"pin" | "pin2" | null>(null);
@@ -51,6 +52,7 @@ const SetPin = () => {
             title={"Dalej"}
             type={KFButtonTypes.Gradient}
             icon="arrow"
+            onPress={() => regContext.goToNextStep()}
           />
         </View>
       </View>

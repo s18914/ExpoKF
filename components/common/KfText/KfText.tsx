@@ -51,6 +51,7 @@ const KfText: FunctionComponent<Props> = ({
           otherStyles && otherStyles,
         ]}
         numberOfLines={numberOfLines ? numberOfLines : undefined}
+        allowFontScaling={false}
       >
         {title}
       </Text>

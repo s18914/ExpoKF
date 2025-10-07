@@ -6,7 +6,7 @@ import {
   isRegistrationPath,
   getMaxStep,
   RegistrationStep,
-} from "./registrationSteps";
+} from "../hooks/registrationSteps";
 
 const useRegistrationStep = () => {
   const router = useRouter();
