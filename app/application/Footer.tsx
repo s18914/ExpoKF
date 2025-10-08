@@ -11,10 +11,10 @@ const windowDimentions = Dimensions.get("window");
 const winHeight = windowDimentions.height;
 
 const ThreeDots = ({ width = 21, height = 20, fill = "#1F2225", ...props }) => (
-  <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', paddingVertical: 10 }} {...props}>
-    <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: fill, marginHorizontal: 1 }} />
-    <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: fill, marginHorizontal: 1 }} />
-    <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: fill, marginHorizontal: 1 }} />
+  <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 4, paddingVertical: 7 }} {...props}>
+    <View style={{ width: 5, height: 5, borderRadius: 4, backgroundColor: fill}} />
+    <View style={{ width: 5, height: 5, borderRadius: 4, backgroundColor: fill}} />
+    <View style={{ width: 5, height: 5, borderRadius: 4, backgroundColor: fill }} />
   </View>
 );
 
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
     { name: 'Fundusze', icon: Funds, route: '/hello' },
     { name: 'Koszyk', icon: Basket, route: '/registration' },
     { name: 'Transakcje', icon: Transfer, route: '/' },
-    { name: 'Więcej', icon: ThreeDots, route: '/application' },
+    { name: 'Więcej', icon: ThreeDots, route: '/' },
   ];
 
   return (
@@ -64,17 +64,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "white",
 
-    // Cień dla iOS
-    shadowColor: "rgba(0, 0, 0, 0.12)",
+    //iOS
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 3,
     },
-    shadowOpacity: 1,
-    shadowRadius: 8,
+    shadowOpacity: 0.12,
+    shadowRadius: 13,
 
-    // Cień dla Androida
-    elevation: 12,
+    // Android
+    elevation: 9,
 
     ...Platform.select({
       android: {
