@@ -4,7 +4,6 @@ import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Footer from "./Footer";
 import {
   StatusBar,
   setStatusBarBackgroundColor,
@@ -44,7 +43,6 @@ export default function Layout() {
         behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
         <Slot />
-        {/* <Footer /> */}
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

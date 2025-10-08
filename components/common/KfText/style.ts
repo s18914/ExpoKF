@@ -68,6 +68,14 @@ const style = StyleSheet.create({
     fontSize: scaleFontSize(18),
     lineHeight: scaleFontSize(27),
   },
+
+  title20: {
+    fontFamily: "EuclidCircularS",
+    fontWeight: "600",
+    letterSpacing: -0.52,
+    fontSize: scaleFontSize(14),
+    lineHeight: scaleFontSize(17),
+  },
 });
 
 export default style;

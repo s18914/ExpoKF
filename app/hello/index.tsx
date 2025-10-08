@@ -14,10 +14,14 @@ const Hello = () => {
     router.push("/registration/login");
   };
 
+  const goToApplication = () => {
+    router.push("/application");
+  };
+
   return (
     <View style={globalStyles.container}>
       <Svg
-        width="1300"
+        width="1200"
         height="2000"
         style={{ position: "absolute", transform: [{ rotate: "-54deg" }] }}
       >
@@ -90,6 +94,7 @@ const Hello = () => {
               title={"Nie mam konta. Otwórz za darmo"}
               type={KFButtonTypes.OutlinedWhite}
               icon="arrow"
+              onPress={goToApplication}
             />
           </View>
         </View>

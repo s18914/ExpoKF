@@ -39,6 +39,8 @@ const KfText: FunctionComponent<Props> = ({
         return style.title7;
       case 10:
         return style.title10;
+      case 20:
+        return style.title20;
     }
   };
   return (
