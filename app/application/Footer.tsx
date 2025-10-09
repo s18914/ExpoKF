@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, Platform, TouchableOpacity } from "react-native";
 import Wallet from "../../assets/icons/menu/wallet";
 import Funds from "../../assets/icons/menu/funds";
@@ -15,17 +15,29 @@ const ThreeDots = ({ width = 21, height = 20, fill = "#1F2225", ...props }) => (
   </View>
 );
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onMorePress?: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onMorePress }) => {
   const router = useRouter();
   const pathname = usePathname();
 
   const menuItems = [
-    { name: 'Portfele', icon: Wallet, route: '/application' },
-    { name: 'Fundusze', icon: Funds, route: '/hello' },
-    { name: 'Koszyk', icon: Basket, route: '/registration' },
-    { name: 'Transakcje', icon: Transfer, route: '/' },
-    { name: 'Więcej', icon: ThreeDots, route: '/' },
+    { name: 'Portfele', icon: Wallet, route: '/application', action: null },
+    { name: 'Fundusze', icon: Funds, route: '/hello', action: null },
+    { name: 'Koszyk', icon: Basket, route: '/registration', action: null },
+    { name: 'Transakcje', icon: Transfer, route: '/', action: null },
+    { name: 'Więcej', icon: ThreeDots, route: null, action: 'more' },
   ];
+
+  const handlePress = (item: any) => {
+    if (item.action === 'more' && onMorePress) {
+      onMorePress();
+    } else if (item.route) {
+      router.push(item.route);
+    }
+  };
 
   return (
     <View style={styles.footer}>
@@ -37,7 +49,7 @@ const Footer: React.FC = () => {
           <TouchableOpacity
             key={index}
             style={[styles.menuItem, isActive && styles.menuItemActive]}
-            onPress={() => router.push(item.route)}
+            onPress={() => handlePress(item)}
           >
             <IconComponent
               width={21}

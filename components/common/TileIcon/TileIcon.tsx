@@ -5,6 +5,7 @@ import Svg, { Defs, RadialGradient, Rect, Stop } from "react-native-svg";
 
 import BadgeLock from "../../../assets/icons/badge_lock.jsx";
 import Wallet from "../../../assets/icons/menu/wallet.jsx";
+import Funds from "../../../assets/icons/menu/funds.jsx";
 import Tools from "../../../assets/icons/tools.jsx";
 import User from "../../../assets/icons/user.jsx";
 import Phone from "../../../assets/icons/telephone.jsx";
@@ -34,6 +35,7 @@ const colors = {
 const iconComponents = {
   badge_lock: BadgeLock,
   wallet: Wallet,
+  funds: Funds,
   tools: Tools,
   user: User,
   phone: Phone,
