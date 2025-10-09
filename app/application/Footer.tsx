@@ -1,14 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, Platform, Dimensions, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Platform, TouchableOpacity } from "react-native";
 import Wallet from "../../assets/icons/menu/wallet";
 import Funds from "../../assets/icons/menu/funds";
 import Basket from "../../assets/icons/menu/basket";
 import Transfer from "../../assets/icons/menu/transfer";
 import { useRouter, usePathname } from "expo-router";
 import KfText from "../../components/common/KfText/KfText";
-
-const windowDimentions = Dimensions.get("window");
-const winHeight = windowDimentions.height;
 
 const ThreeDots = ({ width = 21, height = 20, fill = "#1F2225", ...props }) => (
   <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 4, paddingVertical: 7 }} {...props}>
@@ -79,11 +76,15 @@ const styles = StyleSheet.create({
     ...Platform.select({
       android: {
         position: "absolute",
-        top: winHeight - 60,
+        bottom: 0,
+        left: 0,
+        right: 0,
       },
       ios: {
         position: "absolute",
-        top: winHeight - 60,
+        bottom: 0,
+        left: 0,
+        right: 0,
       },
       default: {
         position: "relative",
