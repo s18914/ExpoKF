@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#E5E5E5',
+    zIndex: 1001, // Above MoreMenu
   },
   avatarContainer: {
     width: 40,

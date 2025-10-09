@@ -48,13 +48,6 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ isVisible, onClose }) => {
 
   return (
     <>
-      {/* Backdrop */}
-      <TouchableOpacity 
-        style={styles.backdrop} 
-        activeOpacity={1} 
-        onPress={onClose}
-      />
-      
       {/* Menu Content */}
       <Animated.View 
         style={[
@@ -118,25 +111,16 @@ const MenuItem: React.FC<MenuItemProps> = ({ title, badge }) => (
 );
 
 const styles = StyleSheet.create({
-  backdrop: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    zIndex: 998,
-  },
   menuContainer: {
     position: 'absolute',
-    top: 80, // Start below header (header height + some margin)
-    bottom: 80, // Reserve space for footer
+    top: 64, // Start right below header (header height)
+    bottom: 60, // Reserve space for footer (footer height)
     left: 0,
     right: 0,
     backgroundColor: '#fff',
-    borderRadius: 20,
-    zIndex: 999,
-    maxHeight: Dimensions.get('window').height - 160, // Reserve space for header and footer
+    borderRadius: 0, // Proste kąty
+    zIndex: 1000,
+    maxHeight: Dimensions.get('window').height - 124,
   },
   content: {
     paddingHorizontal: 16,
