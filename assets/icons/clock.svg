@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="102px" height="94px" viewBox="0 0 102 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Aplikacja" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="14_Aktualizacja" transform="translate(-166, -249)">
+            <g id="Group" transform="translate(169, 252)">
+                <path d="M63.8480513,4.72037354 C57.8848011,1.70117582 51.141066,0 44,0 C19.699471,0 0,19.699471 0,44 C0,68.300529 19.699471,88 44,88 C68.300529,88 88,68.300529 88,44" id="Path" stroke="#4ECF17" stroke-width="6"></path>
+                <line x1="44" y1="0.463157895" x2="44" y2="7" id="Line" stroke="#4ECF17" stroke-width="6" stroke-linecap="square"></line>
+                <line x1="44" y1="82" x2="44" y2="87.5368421" id="Line-Copy" stroke="#4ECF17" stroke-width="6" stroke-linecap="square"></line>
+                <line x1="2.31583579" y1="44.0000463" x2="7" y2="44" id="Line-Copy-3" stroke="#4ECF17" stroke-width="6" stroke-linecap="square"></line>
+                <polyline id="Path" stroke="#4ECF17" stroke-width="6" points="44 24.8984573 44 44 60.8158898 60.7294111"></polyline>
+                <path d="M81.5,4 C91.1649831,4 99,11.8350169 99,21.5 C99,31.1649831 91.1649831,39 81.5,39 C71.8350169,39 64,31.1649831 64,21.5 C64,11.8350169 71.8350169,4 81.5,4 Z M87.9323393,15.4838436 L80.5578866,23.3195404 L75.8883911,19.0275783 L73.1813822,21.9724217 L79.3059124,27.602316 L80.7611488,28.940023 L82.1158475,27.500591 L90.8452006,18.2252372 L87.9323393,15.4838436 Z" id="Combined-Shape" fill="#4ECF17"></path>
+            </g>
+        </g>
+    </g>
+</svg>

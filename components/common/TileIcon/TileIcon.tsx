@@ -11,7 +11,7 @@ import User from "../../../assets/icons/user.jsx";
 import Phone from "../../../assets/icons/telephone.jsx";
 import Ask from "../../../assets/icons/ask";
 import Locker from "../../../assets/icons/locker";
-import { verticalScale } from "../../../assets/styles/scaling";
+import { horizontalScale, verticalScale } from "../../../assets/styles/scaling";
 
 type IconName = keyof typeof iconComponents;
 

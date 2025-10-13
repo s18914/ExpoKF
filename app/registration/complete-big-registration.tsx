@@ -36,6 +36,7 @@ const CompleteBigRegistration = () => {
         title2="Posiadasz login i hasło, ale Twoje konto na KupFundusz.pl nie jest w pełni kompletne."
         title3="Dokończ proces zakładania konta, by móc rozpocząć inwestowanie, a następnie aktywuj dostęp do aplikacji."
         color={GradientColor.Green}
+        icon="userEdit"
       />
       <View
         style={[

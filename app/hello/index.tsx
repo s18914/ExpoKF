@@ -1,15 +1,17 @@
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, Easing, Animated } from "react-native";
 import Svg, { Defs, RadialGradient, Rect, Stop } from "react-native-svg";
 import KfText from "../../components/common/KfText/KfText";
 import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
 import KfButton, {
   KFButtonTypes,
 } from "../../components/common/KfButton/KfButton";
-import { globalStyles } from "../../assets/styles/globalStyles";
 import { useRouter } from "expo-router";
+import { useEffect, useRef } from "react";
+import { globalStyles } from "../../assets/styles/globalStyles";
 
 const Hello = () => {
   const router = useRouter();
+  const verticalVal = useRef(new Animated.Value(0)).current;
   const goToLogin = () => {
     router.push("/registration/login");
   };
@@ -18,15 +20,51 @@ const Hello = () => {
     router.push("/application");
   };
 
+  useEffect(() => {
+    const startAnimation = () => {
+      Animated.timing(verticalVal, {
+        toValue: 20,
+        duration: 1000,
+        easing: Easing.inOut(Easing.quad),
+        useNativeDriver: false,
+      }).start();
+    };
+
+    const animationListener = ({ value }: { value: number }) => {
+      if (value === 20) {
+        Animated.timing(verticalVal, {
+          toValue: 0,
+          duration: 1500,
+          easing: Easing.inOut(Easing.quad),
+          useNativeDriver: false,
+        }).start();
+      } else if (value === 0) {
+        Animated.timing(verticalVal, {
+          toValue: 20,
+          duration: 1000,
+          easing: Easing.inOut(Easing.quad),
+          useNativeDriver: false,
+        }).start();
+      }
+    };
+
+    const listenerId = verticalVal.addListener(animationListener);
+    startAnimation();
+
+    return () => {
+      verticalVal.removeListener(listenerId);
+    };
+  }, [verticalVal]);
+
   return (
     <View style={globalStyles.container}>
       <Svg
-        width="1200"
-        height="2000"
+        width={1200}
+        height={2000}
         style={{ position: "absolute", transform: [{ rotate: "-54deg" }] }}
       >
         <Defs>
-          <RadialGradient id="grad" cx="73%" cy="42%" r="37%" fx="75%" fy="50%">
+          <RadialGradient id="grad" cx="73%" cy="42%" r="38%" fx="75%" fy="50%">
             <Stop offset="0" stopColor="rgba(255, 255, 255, 1)" />
             <Stop offset="0.3" stopColor="rgba(255, 255, 255, 1)" />
             <Stop offset="0.35" stopColor="rgba(228, 255, 199, 1)" />
@@ -52,16 +90,16 @@ const Hello = () => {
           transform: [{ rotate: "-54deg" }],
         }}
       >
-        <Image
-          source={require("../../assets/images/KF_Logo3D.png")}
+        <Animated.Image
+          source={require("../../assets/images/KF_Logo3Dx2.png")}
           style={[
             styles.logo3D,
-            { transform: [{ rotate: "54deg" }, { scale: 0.9 }] },
+            { transform: [{ rotate: "54deg" }, { scale: 0.45 }, { translateY: verticalVal }] },
           ]}
         />
         <Image
           source={require("../../assets/images/spark.png")}
-          style={[styles.spark, { transform: [{ rotate: "54deg" }] }]}
+          style={[styles.spark, { transform: [{ rotate: "58deg" }, { scale: 0.95 }] }]}
         />
       </View>
 
@@ -111,12 +149,12 @@ const styles = StyleSheet.create({
   },
   logo3D: {
     position: "absolute",
-    top: 670,
-    left: 590,
+    top: 470,
+    left: 400,
   },
   spark: {
     position: "absolute",
-    top: 410,
+    top: 440,
     left: 442,
   },
   content: {

@@ -20,6 +20,7 @@ const SetBiometry = () => {
         title2="Włącz logowanie do aplikacji odciskiem palca Touch ID."
         title3="Po włączeniu Touch ID nadal możesz logować się do aplikacji za pomocą kodu PIN. Zawsze możesz wyłączyć tę funkcję w menu „Ustawienia konta”."
         color={GradientColor.Violet}
+        icon="fingerprint"
       />
       <View
         style={[

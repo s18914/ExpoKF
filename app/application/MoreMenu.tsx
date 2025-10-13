@@ -3,6 +3,7 @@ import { View, StyleSheet, TouchableOpacity, Animated, Dimensions } from 'react-
 import TileIcon from '../../components/common/TileIcon/TileIcon';
 import KfText from '../../components/common/KfText/KfText';
 import ArrowIcon from '../../assets/icons/arrow_icon';
+import { horizontalScale, scaleFontSize, verticalScale } from '../../assets/styles/scaling';
 
 interface MoreMenuProps {
   isVisible: boolean;
@@ -58,12 +59,11 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ isVisible, onClose }) => {
           },
         ]}
       >
-        <View style={styles.content}>
           {/* Section: Moje inwestycje */}
           <View style={styles.section}>
             <View style={styles.sectionHeader}>
               <TileIcon icon="funds" color="light-green" isSmall={true} />
-              <KfText title="Moje inwestycje" type={3} />
+              <KfText title="Moje inwestycje" type={30} otherStyles={{height: verticalScale(50)}} />
             </View>
             
             <View style={styles.menuItems}>
@@ -80,7 +80,7 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ isVisible, onClose }) => {
           <View style={styles.section}>
             <View style={styles.sectionHeader}>
               <TileIcon icon="tools" color="light-green" isSmall={true} />
-              <KfText title="Narzędzia" type={3} />
+              <KfText title="Narzędzia" type={30} otherStyles={{height: verticalScale(50)}} />
             </View>
             
             <View style={styles.menuItems}>
@@ -89,7 +89,6 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ isVisible, onClose }) => {
               <MenuItem title="Terminy zleceń" />
             </View>
           </View>
-        </View>
       </Animated.View>
     </>
   );
@@ -103,10 +102,10 @@ interface MenuItemProps {
 const MenuItem: React.FC<MenuItemProps> = ({ title, badge }) => (
   <TouchableOpacity style={styles.menuItem} activeOpacity={0.7}>
     <View style={styles.menuItemContent}>
-      <KfText title={title} type={4} />
+      <KfText title={title} type={40} />
       {badge && <View style={styles.badge} />}
     </View>
-    <ArrowIcon width={10} height={10} fill="#1F2225" />
+    <ArrowIcon width={verticalScale(15)} height={verticalScale(12)} fill="#1F2225" />
   </TouchableOpacity>
 );
 
@@ -118,34 +117,32 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     backgroundColor: '#fff',
-    borderRadius: 0, // Proste kąty
+    borderRadius: 0,
     zIndex: 1000,
-    maxHeight: Dimensions.get('window').height - 124,
-  },
-  content: {
-    paddingHorizontal: 16,
-    paddingTop: 12,
+    maxHeight: Dimensions.get('window').height - 124
   },
   section: {
-    marginBottom: 20,
+    paddingVertical: verticalScale(30),
+    paddingHorizontal: horizontalScale(26),
+    borderBottomWidth: 1,
+    borderBottomColor: '#F5F5F5',
   },
   sectionHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    marginBottom: 12,
+    gap: horizontalScale(15),
+    height: verticalScale(55)
   },
   menuItems: {
-    gap: 0,
+    //gap: 0,
   },
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 12,
-    paddingHorizontal: 6,
-    borderBottomWidth: 1,
-    borderBottomColor: '#F5F5F5',
+    paddingVertical: verticalScale(12)
+    //paddingHorizontal: 6,
+    
   },
   menuItemContent: {
     flexDirection: 'row',

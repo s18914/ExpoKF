@@ -76,6 +76,22 @@ const style = StyleSheet.create({
     fontSize: scaleFontSize(14),
     lineHeight: scaleFontSize(17),
   },
+
+  title30: {
+    fontFamily: "EuclidCircularM",
+    fontWeight: "500",
+    letterSpacing: -0.81,
+    fontSize: scaleFontSize(26),
+    lineHeight: scaleFontSize(32),
+  },
+
+  title40: {
+    fontFamily: "EuclidCircularM",
+    fontWeight: "500",
+    letterSpacing: -0.63,
+    fontSize: scaleFontSize(20),
+    lineHeight: scaleFontSize(25),
+  },
 });
 
 export default style;

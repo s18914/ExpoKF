@@ -19,7 +19,8 @@ const SetTransactionConfirmation = () => {
         title="Potwierdzanie transakcji Face ID"
         title2="Włącz potwierdzanie zleceń za pomocą Face ID."
         title3="Po włączeniu Face ID nadal możesz potwierdzać zlecenia za pomocą kodu PIN."
-        color={GradientColor.Violet}
+        color={GradientColor.Green}
+        icon="faceId"
       />
       <View
         style={[

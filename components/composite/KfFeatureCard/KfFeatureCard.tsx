@@ -4,15 +4,19 @@ import style from "./style";
 import Svg, { Defs, RadialGradient, Rect, Stop } from "react-native-svg";
 import { verticalScale } from "../../../assets/styles/scaling";
 import Header from "../../common/KfText/KfText";
-import KfButton, { KFButtonTypes } from "../../common/KfButton/KfButton";
-import UserEdit from "../../../assets/icons/user_edit";
 import KfRegistrationHeader from "../KfRegistrationHeader/KfRegistrationHeader";
+import FaceId from "../../../assets/icons/face_id";
+import Fingerprint from "../../../assets/icons/fingerprint";
+import UserEdit from "../../../assets/icons/user_edit";
+import NoWifi from "../../../assets/icons/no_wifi";
+
+type IconName = keyof typeof iconComponents;
 
 interface Props {
   title: string;
   title2?: string;
   title3?: string;
-  icon?: string;
+  icon: IconName;
   color?: GradientColor;
 }
 
@@ -22,6 +26,13 @@ export enum GradientColor {
   Violet,
   Grey,
 }
+
+const iconComponents = {
+  faceId: FaceId,
+  fingerprint: Fingerprint,
+  userEdit: UserEdit,
+  noWifi: NoWifi,
+};
 
 const KfFeatureCard: FunctionComponent<Props> = ({ title = "", ...props }) => {
   const getGradientColor = () => {
@@ -37,6 +48,7 @@ const KfFeatureCard: FunctionComponent<Props> = ({ title = "", ...props }) => {
     }
   };
   const gradientColor = getGradientColor();
+  const IconComponent = iconComponents[props.icon] || null;
 
   return (
     <View style={{ flex: 1 }}>
@@ -67,12 +79,14 @@ const KfFeatureCard: FunctionComponent<Props> = ({ title = "", ...props }) => {
               fill="url(#featureCardGradient)"
             />
           </Svg>
-          <UserEdit
+          {IconComponent && (
+            <IconComponent
             style={style.icon}
             width={verticalScale(90)}
             height={verticalScale(90)}
-            fill="#000"
-          />
+            />
+          )}
+          
         </View>
         <View style={style.headers}>
           <Header title={title} isTextCenter={true} />
