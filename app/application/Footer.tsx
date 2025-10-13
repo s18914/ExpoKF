@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     backgroundColor: "white",
-    zIndex: 1001, // Above MoreMenu
+    zIndex: 900, // Above MoreMenu
 
     //iOS
     shadowColor: "#000",
