@@ -58,6 +58,7 @@ const style = StyleSheet.create({
     width: "100%",
     height: verticalScale(70),
     paddingRight: verticalScale(80),
+    textDecorationColor: "transparent",
   },
   inputWithText: {
     letterSpacing: 4.09,

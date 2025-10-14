@@ -66,7 +66,7 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ isVisible, onClose }) => {
               <KfText title="Moje inwestycje" type={30} otherStyles={{height: verticalScale(50)}} />
             </View>
             
-            <View style={styles.menuItems}>
+            <View>
               <MenuItem title="Portfel inwestycyjny" />
               <MenuItem title="Portfel IKE" />
               <MenuItem title="Portfel IKZE" />
@@ -83,7 +83,7 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ isVisible, onClose }) => {
               <KfText title="Narzędzia" type={30} otherStyles={{height: verticalScale(50)}} />
             </View>
             
-            <View style={styles.menuItems}>
+            <View>
               <MenuItem title="Kreator portfela" />
               <MenuItem title="Portfel treningowy" />
               <MenuItem title="Terminy zleceń" />
@@ -133,16 +133,11 @@ const styles = StyleSheet.create({
     gap: horizontalScale(15),
     height: verticalScale(55)
   },
-  menuItems: {
-    //gap: 0,
-  },
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: verticalScale(12)
-    //paddingHorizontal: 6,
-    
   },
   menuItemContent: {
     flexDirection: 'row',

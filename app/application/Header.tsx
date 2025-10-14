@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import AskSmall from '../../assets/icons/ask_small';
+import KfText from '../../components/common/KfText/KfText';
 
 interface HeaderProps {
   onAvatarPress?: () => void;
@@ -20,7 +21,7 @@ const Header: React.FC<HeaderProps> = ({ onAvatarPress, onAskPress }) => {
         </View>
       </TouchableOpacity>
 
-      <View style={styles.spacer} />
+      <KfText title="Pulpit inwestycyjny" type={5} otherStyles={{flex: 1, height: "auto"}}/>
 
       <TouchableOpacity
         style={styles.askButton}
@@ -35,6 +36,7 @@ const Header: React.FC<HeaderProps> = ({ onAvatarPress, onAskPress }) => {
 
 const styles = StyleSheet.create({
   header: {
+    display: "flex",
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -60,9 +62,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#ddd',
-  },
-  spacer: {
-    flex: 1,
   },
   askButton: {
     padding: 8,

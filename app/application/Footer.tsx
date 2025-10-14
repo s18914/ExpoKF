@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Platform, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Platform,
+  TouchableOpacity,
+} from "react-native";
 import Wallet from "../../assets/icons/menu/wallet";
 import Funds from "../../assets/icons/menu/funds";
 import Basket from "../../assets/icons/menu/basket";
@@ -8,10 +14,25 @@ import { useRouter, usePathname } from "expo-router";
 import KfText from "../../components/common/KfText/KfText";
 
 const ThreeDots = ({ width = 21, height = 20, fill = "#1F2225", ...props }) => (
-  <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 4, paddingVertical: 7 }} {...props}>
-    <View style={{ width: 5, height: 5, borderRadius: 4, backgroundColor: fill}} />
-    <View style={{ width: 5, height: 5, borderRadius: 4, backgroundColor: fill}} />
-    <View style={{ width: 5, height: 5, borderRadius: 4, backgroundColor: fill }} />
+  <View
+    style={{
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: 4,
+      paddingVertical: 7,
+    }}
+    {...props}
+  >
+    <View
+      style={{ width: 5, height: 5, borderRadius: 4, backgroundColor: fill }}
+    />
+    <View
+      style={{ width: 5, height: 5, borderRadius: 4, backgroundColor: fill }}
+    />
+    <View
+      style={{ width: 5, height: 5, borderRadius: 4, backgroundColor: fill }}
+    />
   </View>
 );
 
@@ -22,19 +43,24 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ onMorePress }) => {
   const router = useRouter();
   const pathname = usePathname();
+  const [moreActive, setMoreActive] = useState(false);
 
   const menuItems = [
-    { name: 'Portfele', icon: Wallet, route: '/application', action: null },
-    { name: 'Fundusze', icon: Funds, route: '/hello', action: null },
-    { name: 'Koszyk', icon: Basket, route: '/registration', action: null },
-    { name: 'Transakcje', icon: Transfer, route: '/', action: null },
-    { name: 'Więcej', icon: ThreeDots, route: null, action: 'more' },
+    { name: "Portfele", icon: Wallet, route: "/application", action: null },
+    { name: "Fundusze", icon: Funds, route: "/hello", action: null },
+    { name: "Koszyk", icon: Basket, route: "/registration", action: null },
+    { name: "Transakcje", icon: Transfer, route: "/", action: null },
+    { name: "Więcej", icon: ThreeDots, route: null, action: "more" },
   ];
 
   const handlePress = (item: any) => {
-    if (item.action === 'more' && onMorePress) {
+    if (item.action === "more" && onMorePress) {
+      setMoreActive(true);
       onMorePress();
     } else if (item.route) {
+      if (moreActive) {
+        setMoreActive(false);
+      }
       router.push(item.route);
     }
   };
@@ -43,7 +69,10 @@ const Footer: React.FC<FooterProps> = ({ onMorePress }) => {
     <View style={styles.footer}>
       {menuItems.map((item, index) => {
         const IconComponent = item.icon;
-        const isActive = pathname === item.route;
+
+        const isActive =
+          (item.action === "more" && moreActive) ||
+          (!moreActive && pathname === item.route);
 
         return (
           <TouchableOpacity
@@ -56,7 +85,7 @@ const Footer: React.FC<FooterProps> = ({ onMorePress }) => {
               height={20}
               fill={isActive ? "#4ECF17" : "#1F2225"}
             />
-            <KfText title={item.name} type={20}/>
+            <KfText title={item.name} type={20} />
           </TouchableOpacity>
         );
       })}
@@ -106,19 +135,19 @@ const styles = StyleSheet.create({
     }),
   },
   menuItem: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 15,
     paddingVertical: 8,
     display: "flex",
     gap: 5,
-    height: "100%"
+    height: "100%",
   },
 
   menuItemActive: {
     borderTopWidth: 3,
-    borderTopColor: "#4ECF17"
-  }
+    borderTopColor: "#4ECF17",
+  },
 });
 
 export default Footer;

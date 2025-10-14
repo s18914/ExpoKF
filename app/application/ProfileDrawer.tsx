@@ -22,7 +22,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ isVisible, onClose }) => 
       }).start();
     } else {
       Animated.spring(slideAnim, {
-        toValue: -200, // Slide up off screen
+        toValue: -50, // Slide up off screen
         useNativeDriver: true,
         tension: 50,
         friction: 8,
@@ -77,7 +77,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ title, badge }) => (
 const styles = StyleSheet.create({
   backdrop: {
     position: 'absolute',
-    top: 65,
+    top: 0,
     left: 0,
     right: 0,
     bottom: 0,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   },
   drawerContainer: {
     position: 'absolute',
-    top: 0,
+    top: 60,
     left: 0,
     right: 0,
     backgroundColor: '#fff',
