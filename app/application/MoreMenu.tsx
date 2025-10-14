@@ -105,14 +105,14 @@ const MenuItem: React.FC<MenuItemProps> = ({ title, badge }) => (
       <KfText title={title} type={40} />
       {badge && <View style={styles.badge} />}
     </View>
-    <ArrowIcon width={verticalScale(15)} height={verticalScale(12)} fill="#1F2225" />
+    <ArrowIcon fill="#1F2225" />
   </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
   menuContainer: {
     position: 'absolute',
-    top: 64, // Start right below header (header height)
+    top: verticalScale(60), // Start right below header (header height)
     bottom: 60, // Reserve space for footer (footer height)
     left: 0,
     right: 0,

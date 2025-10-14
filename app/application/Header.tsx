@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import AskSmall from '../../assets/icons/ask_small';
+import Conversation from '../../assets/icons/conversation';
 import KfText from '../../components/common/KfText/KfText';
-
+import { horizontalScale, scaleFontSize, verticalScale } from '../../assets/styles/scaling';
+import UserEmpty from '../../assets/icons/user_empty';
+import ArrowDown from '../../assets/icons/common/arrow_down';
 interface HeaderProps {
   onAvatarPress?: () => void;
   onAskPress?: () => void;
@@ -16,19 +18,18 @@ const Header: React.FC<HeaderProps> = ({ onAvatarPress, onAskPress }) => {
         onPress={onAvatarPress}
         activeOpacity={0.7}
       >
-        <View style={styles.avatar}>
-          
-        </View>
+        <UserEmpty />
+        <ArrowDown />
+
       </TouchableOpacity>
 
-      <KfText title="Pulpit inwestycyjny" type={5} otherStyles={{flex: 1, height: "auto"}}/>
+      <KfText title="Pulpit inwestycyjny" type={5} otherStyles={{height: "auto"}}/>
 
       <TouchableOpacity
-        style={styles.askButton}
         onPress={onAskPress}
         activeOpacity={0.7}
       >
-        <AskSmall width={20} height={19} fill="#1F2225" />
+        <Conversation width={scaleFontSize(29)} height={scaleFontSize(28)} fill="#1F2225" />
       </TouchableOpacity>
     </View>
   );
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    height: verticalScale(60),
     paddingHorizontal: 16,
     paddingVertical: 12,
     backgroundColor: '#fff',
@@ -48,23 +50,10 @@ const styles = StyleSheet.create({
     zIndex: 1001, // Above MoreMenu
   },
   avatarContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#f0f0f0',
+    display: "flex",
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  avatar: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#ddd',
-  },
-  askButton: {
-    padding: 8,
+    gap: horizontalScale(7),
   },
 });
 

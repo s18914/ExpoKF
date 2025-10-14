@@ -1,11 +1,10 @@
 import * as React from 'react';
 import Svg, { Path } from 'react-native-svg';
-const SvgComponent = props => (
+const SvgComponent = ({ width = 13, height = 13, fill = "#fff", ...props }) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
-    width={13}
-    height={13}
-    fill="#fff"
+   width={width} height={height} 
+    fill={fill}
     viewBox="0 0 100 100"
     {...props}
   >
