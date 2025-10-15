@@ -12,6 +12,7 @@ import Basket from "../../assets/icons/menu/basket";
 import Transfer from "../../assets/icons/menu/transfer";
 import { useRouter, usePathname } from "expo-router";
 import KfText from "../../components/common/KfText/KfText";
+import { scaleFontSize, verticalScale } from "../../assets/styles/scaling";
 
 const ThreeDots = ({ width = 21, height = 20, fill = "#1F2225", ...props }) => (
   <View
@@ -81,8 +82,8 @@ const Footer: React.FC<FooterProps> = ({ onMorePress }) => {
             onPress={() => handlePress(item)}
           >
             <IconComponent
-              width={21}
-              height={20}
+              width={scaleFontSize(21)}
+              height={scaleFontSize(20)}
               fill={isActive ? "#4ECF17" : "#1F2225"}
             />
             <KfText title={item.name} type={20} />
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
   footer: {
     alignItems: "center",
     justifyContent: "space-around",
-    height: 60,
+    height: verticalScale(75),
     width: "100%",
     flexDirection: "row",
     backgroundColor: "white",
