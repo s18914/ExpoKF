@@ -2,9 +2,8 @@ import React, { FunctionComponent } from "react";
 
 import style from "./style";
 import { Pressable, StyleProp, ViewStyle } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { horizontalScale, verticalScale } from "../../../assets/styles/scaling";
+import ArrowIcon from "../../../assets/icons/arrow_icon";
 
 interface Props {
   onPress: () => void;
@@ -17,7 +16,12 @@ const BackButton: FunctionComponent<Props> = (props) => {
       onPress={() => props.onPress()}
       style={[style.container, props.style && props.style]}
     >
-      <FontAwesomeIcon color="#000000ff" icon={faArrowLeft as IconProp} />
+      <ArrowIcon
+            width={horizontalScale(15)}
+            height={verticalScale(13)}
+            fill="black"
+            style={{transform: [{rotate: "180deg"}]}}
+          />
     </Pressable>
   );
 };

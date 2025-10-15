@@ -14,11 +14,13 @@ import Logout from "../../assets/icons/logout"
 interface ProfileDrawerProps {
   isVisible: boolean;
   onClose: () => void;
+  onBiometricsPress: () => void;
 }
 
 const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
   isVisible,
   onClose,
+  onBiometricsPress,
 }) => {
   const slideAnim = useRef(new Animated.Value(-200)).current; // Start above screen
 
@@ -58,7 +60,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
       >
         <View style={styles.drawerContent}>
           <MenuItem title="Moje dane i ustawienia konta" />
-          <MenuItem title="Biometria i kod PIN" />
+          <MenuItem title="Biometria i kod PIN" onPress={onBiometricsPress} />
           <MenuItem title="Powiadomienia (4) " />
           <MenuItem title="Wiadomości (2)" />
           <MenuItem title="Profil inwestora" />
@@ -79,16 +81,16 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
 interface MenuItemProps {
   title: string;
   badge?: boolean;
+  onPress?: () => void;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ title, badge }) => (
-  <TouchableOpacity style={styles.menuItem} activeOpacity={0.7}>
+const MenuItem: React.FC<MenuItemProps> = ({ title, badge, onPress }) => (
+  <TouchableOpacity style={styles.menuItem} activeOpacity={0.7} onPress={onPress}>
     <View style={styles.menuItemContent}>
       <KfText title={title} type={40} />
       {badge && <View style={styles.badge} />}
     </View>
     <ArrowIcon
-      
       fill="#1F2225"
     />
   </TouchableOpacity>
