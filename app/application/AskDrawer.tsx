@@ -4,13 +4,12 @@ import {
   StyleSheet,
   TouchableOpacity,
   Animated,
-  Dimensions,
 } from "react-native";
 import KfText from "../../components/common/KfText/KfText";
-import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
-import ArrowIcon from "../../assets/icons/arrow_icon";
-import Logout from "../../assets/icons/logout"
+import { horizontalScale, scaleFontSize, verticalScale } from "../../assets/styles/scaling";
+
 import MenuItem from "../../components/common/MenuItem/MenuItem";
+import TileIcon from "../../components/common/TileIcon/TileIcon";
 
 interface AskDrawerProps {
   isVisible: boolean;
@@ -64,6 +63,19 @@ const AskDrawer: React.FC<AskDrawerProps> = ({
           <MenuItem title="Informacje prawne" />
           <MenuItem title="Formularz kontaktowy" />
         </View>
+
+        <View style={styles.phoneSection}>
+          <KfText title="Zadzwoń do nas" type={40} />
+          <View style={styles.phoneSectionContent}>
+            <TileIcon icon="phone" color="light-green" isSuperSmall />
+            <View >
+              <KfText title="+48 22 599 42 67" type={40} otherStyles={{}} />
+              <KfText title="Jesteśmy do&nbsp;Twojej dyspozycji od&nbsp;poniedziałku" type={7} otherStyles={{color: "#A7B7A0", letterSpacing: -0.38, fontSize: scaleFontSize(12), lineHeight: scaleFontSize(15)}}/>
+              <KfText title="do&nbsp;piątku w godz.&nbsp;8-16" type={7} otherStyles={{color: "#A7B7A0", letterSpacing: -0.38, fontSize: scaleFontSize(12), lineHeight: scaleFontSize(15)}}/>
+            </View>
+          </View>
+          
+        </View>
         
       </Animated.View>
     </TouchableOpacity>
@@ -104,6 +116,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: horizontalScale(25),
     paddingTop: verticalScale(15),
     paddingBottom: verticalScale(13),
+  },
+  phoneSection: {
+    gap: horizontalScale(15),
+    paddingHorizontal: horizontalScale(25),
+    paddingVertical: verticalScale(15),
+    backgroundColor: "#4ECF1720",
+    borderRadius: horizontalScale(10),
+    marginVertical: verticalScale(15),
+    marginHorizontal: horizontalScale(25),
+  },
+  phoneSectionContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: horizontalScale(15),
   },
 });
 
