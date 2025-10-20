@@ -7,12 +7,14 @@ import ProfileDrawer from './ProfileDrawer';
 import BiometricsScreen from './BiometricsScreen';
 import ChangePinScreen from './ChangePinScreen';
 import { WebView } from 'react-native-webview';
+import AskDrawer from './AskDrawer';
 
 type Screen = 'main' | 'biometrics' | 'changePin';
 
 export default function ApplicationScreen() {
   const [isMoreMenuVisible, setIsMoreMenuVisible] = useState(false);
   const [isProfileDrawerVisible, setIsProfileDrawerVisible] = useState(false);
+  const [isAskDrawerVisible, setIsAskDrawerVisible] = useState(false);
   const [currentScreen, setCurrentScreen] = useState<Screen>('main');
 
   const handleMorePress = () => {
@@ -33,6 +35,19 @@ export default function ApplicationScreen() {
 
   const handleProfileDrawerClose = () => {
     setIsProfileDrawerVisible(false);
+  };
+
+  const handleAskDrawerClose = () => {
+    setIsAskDrawerVisible(false);
+  };
+
+  const handleAskPress = () => {
+    setIsAskDrawerVisible(!isAskDrawerVisible);
+    setIsProfileDrawerVisible(false);
+    // Close MoreMenu if it's open
+    if (isMoreMenuVisible) {
+      setIsMoreMenuVisible(false);
+    }
   };
 
   const handleBiometricsPress = () => {
@@ -79,7 +94,12 @@ export default function ApplicationScreen() {
         onClose={handleProfileDrawerClose}
         onBiometricsPress={handleBiometricsPress}
       />
-      <Header onAvatarPress={handleAvatarPress} />
+      <AskDrawer
+        isVisible={isAskDrawerVisible}
+        onClose={handleAskDrawerClose}
+        onBiometricsPress={handleBiometricsPress}
+      />
+      <Header onAvatarPress={handleAvatarPress} onAskPress={handleAskPress}/>
       <View style={styles.content}>
         <WebView source={{ uri: 'https://app.kupfundusz.pl/logowanie' }} />
       </View>

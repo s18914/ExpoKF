@@ -12,13 +12,13 @@ import ArrowIcon from "../../assets/icons/arrow_icon";
 import Logout from "../../assets/icons/logout"
 import MenuItem from "../../components/common/MenuItem/MenuItem";
 
-interface ProfileDrawerProps {
+interface AskDrawerProps {
   isVisible: boolean;
   onClose: () => void;
   onBiometricsPress: () => void;
 }
 
-const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
+const AskDrawer: React.FC<AskDrawerProps> = ({
   isVisible,
   onClose,
   onBiometricsPress,
@@ -60,20 +60,11 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
         ]}
       >
         <View style={styles.itemsSection}>
-          <MenuItem title="Moje dane i ustawienia konta" />
-          <MenuItem title="Biometria i kod PIN" onPress={onBiometricsPress} />
-          <MenuItem title="Powiadomienia (4) " />
-          <MenuItem title="Wiadomości (2)" />
-          <MenuItem title="Profil inwestora" />
+          <MenuItem title="Centrum pomocy" />
+          <MenuItem title="Informacje prawne" />
+          <MenuItem title="Formularz kontaktowy" />
         </View>
-        <TouchableOpacity activeOpacity={0.7}>
-          <View style={styles.logoutButton}>
-            <Logout  width={verticalScale(21)}
-              height={verticalScale(23)}
-              fill="#1F2225"/>
-            <KfText title={"Wyloguj się"} type={40} />
-          </View>
-        </TouchableOpacity>
+        
       </Animated.View>
     </TouchableOpacity>
   );
@@ -107,7 +98,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 8,
     elevation: 12,
-    gap: verticalScale(15),
   },
   itemsSection: {
     gap: verticalScale(9),
@@ -115,15 +105,6 @@ const styles = StyleSheet.create({
     paddingTop: verticalScale(15),
     paddingBottom: verticalScale(13),
   },
-  logoutButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    flex: 1,
-    gap: horizontalScale(15),
-    height: verticalScale(40),
-    paddingHorizontal: horizontalScale(25),
-    //paddingTop: verticalScale(10),
-  }
 });
 
-export default ProfileDrawer;
+export default AskDrawer;

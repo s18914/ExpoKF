@@ -19,6 +19,7 @@ interface TileIconProps {
   icon: IconName;
   color?: keyof typeof colors;
   isSmall?: boolean;
+  isSuperSmall?: boolean;
   additionalColor?: string;
 }
 
@@ -47,6 +48,7 @@ const TileIcon: FunctionComponent<TileIconProps> = ({
   icon,
   color = "default",
   isSmall = false,
+  isSuperSmall = false,
   additionalColor,
 }) => {
   const bgColor = colors[color];
@@ -60,7 +62,9 @@ const TileIcon: FunctionComponent<TileIconProps> = ({
           borderColor: bgColor,
         },
         style.tileIconBox,
+        (!isSmall && !isSuperSmall && {width: verticalScale(65), height: verticalScale(65)}),
         isSmall && { width: verticalScale(55), height: verticalScale(55) },
+        isSuperSmall && { width: verticalScale(50), height: verticalScale(50) },
       ]}
     >
       <Svg
@@ -78,8 +82,8 @@ const TileIcon: FunctionComponent<TileIconProps> = ({
       </Svg>
       {IconComponent && (
         <IconComponent
-          width={isSmall ? verticalScale(26) : verticalScale(28)}
-          height={isSmall ? verticalScale(26) : verticalScale(28)}
+          width={isSmall ? verticalScale(26) : isSuperSmall ? verticalScale( 24) : verticalScale(28)}
+          height={isSmall ? verticalScale(26) : isSuperSmall ? verticalScale( 24) : verticalScale(28)}
           fill={additionalColor ? additionalColor : "#4ecf17ff"}
         />
       )}

@@ -2,19 +2,16 @@ import React, { useEffect, useRef } from "react";
 import {
   View,
   StyleSheet,
-  TouchableOpacity,
   Animated,
   Dimensions,
 } from "react-native";
 import TileIcon from "../../components/common/TileIcon/TileIcon";
 import KfText from "../../components/common/KfText/KfText";
-import ArrowIcon from "../../assets/icons/arrow_icon";
 import {
   horizontalScale,
-  scaleFontSize,
   verticalScale,
 } from "../../assets/styles/scaling";
-import Spacer from "../../components/common/Spacer/Spacer";
+import MenuItem from "../../components/common/MenuItem/MenuItem";
 
 interface MoreMenuProps {
   isVisible: boolean;
@@ -71,9 +68,9 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ isVisible, onClose }) => {
         ]}
       >
         {/* Section: Moje inwestycje */}
-        <View style={styles.section}>
+        <View style={[styles.section, styles.sectionWithBorderBottom]}>
           <View style={styles.sectionHeader}>
-            <TileIcon icon="funds" color="light-green" isSmall={true} />
+            <TileIcon icon="funds" color="light-green" isSuperSmall={true} />
             <KfText
               title="Moje inwestycje"
               type={30}
@@ -98,7 +95,7 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ isVisible, onClose }) => {
         {/* Section: Narzędzia */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <TileIcon icon="tools" color="light-green" isSmall={true} />
+            <TileIcon icon="tools" color="light-green" isSuperSmall={true} />
             <KfText
               title="Narzędzia"
               type={30}
@@ -117,35 +114,6 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ isVisible, onClose }) => {
   );
 };
 
-interface MenuItemProps {
-  title: string;
-  marker?: boolean;
-  badge?: string;
-  color?: string;
-}
-
-const MenuItem: React.FC<MenuItemProps> = ({ title, marker, badge, color }) => (
-  <TouchableOpacity style={styles.menuItem} activeOpacity={0.7}>
-    <View style={styles.menuItemContent}>
-      <View style={styles.menuItemTitle}>
-        <KfText title={title} type={40} />
-        {marker && <View style={[styles.marker, { backgroundColor: color }]} />}
-      </View>
-      <Spacer />
-      {badge && (
-        <View style={[styles.badge, { backgroundColor: `${color}25` }]}>
-          <KfText
-            title={badge}
-            type={7}
-            color={color ?? "black"}
-            otherStyles={{ fontFamily: "EuclidCircularM" }}
-          />
-        </View>
-      )}
-    </View>
-    <ArrowIcon fill="#1F2225" />
-  </TouchableOpacity>
-);
 
 const styles = StyleSheet.create({
   menuContainer: {
@@ -162,6 +130,8 @@ const styles = StyleSheet.create({
   section: {
     paddingVertical: verticalScale(30),
     paddingHorizontal: horizontalScale(26),
+  },
+  sectionWithBorderBottom: {
     borderBottomWidth: 1,
     borderBottomColor: "#F5F5F5",
   },
@@ -169,39 +139,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: horizontalScale(15),
-    height: verticalScale(55),
+    height: verticalScale(50),
+    paddingTop: verticalScale(10),
   },
   itemsSection: {
     gap: verticalScale(9),
-  },
-  menuItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    height: verticalScale(40),
-    gap: horizontalScale(15),
-  },
-  menuItemContent: {
-    flexDirection: "row",
-    alignItems: "center",
-    flex: 1,
-  },
-  menuItemTitle: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    gap: horizontalScale(3),
-  },
-  marker: {
-    width: horizontalScale(10),
-    height: horizontalScale(10),
-    borderRadius: horizontalScale(8),
-  },
-  badge: {
-    height: verticalScale(40),
-    paddingHorizontal: horizontalScale(20),
-    paddingBottom: verticalScale(2),
-    borderRadius: horizontalScale(30),
-    justifyContent: "center",
-    marginLeft: "auto",
+    paddingTop: verticalScale(15),
   },
 });
 

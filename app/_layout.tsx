@@ -37,7 +37,7 @@ export default function Layout() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar style="light" hidden={true} />
+      <StatusBar style="light" hidden={false} />
       <KeyboardAvoidingView
         style={{ flex: 1, height: "100%" }}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
