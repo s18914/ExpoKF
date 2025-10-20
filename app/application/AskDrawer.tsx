@@ -67,16 +67,17 @@ const AskDrawer: React.FC<AskDrawerProps> = ({
         <View style={styles.phoneSection}>
           <KfText title="Zadzwoń do nas" type={40} />
           <View style={styles.phoneSectionContent}>
-            <TileIcon icon="phone" color="light-green" isSuperSmall />
+            <View style={{paddingTop: verticalScale(5)}}>
+              <TileIcon icon="phone" color="light-green" isSuperSmall />
+            </View>
+            
             <View >
               <KfText title="+48 22 599 42 67" type={40} otherStyles={{}} />
               <KfText title="Jesteśmy do&nbsp;Twojej dyspozycji od&nbsp;poniedziałku" type={7} otherStyles={{color: "#A7B7A0", letterSpacing: -0.38, fontSize: scaleFontSize(12), lineHeight: scaleFontSize(15)}}/>
               <KfText title="do&nbsp;piątku w godz.&nbsp;8-16" type={7} otherStyles={{color: "#A7B7A0", letterSpacing: -0.38, fontSize: scaleFontSize(12), lineHeight: scaleFontSize(15)}}/>
             </View>
           </View>
-          
         </View>
-        
       </Animated.View>
     </TouchableOpacity>
   );
@@ -115,20 +116,19 @@ const styles = StyleSheet.create({
     gap: verticalScale(9),
     paddingHorizontal: horizontalScale(25),
     paddingTop: verticalScale(15),
-    paddingBottom: verticalScale(13),
+    paddingBottom: verticalScale(11),
   },
   phoneSection: {
     gap: horizontalScale(15),
     paddingHorizontal: horizontalScale(25),
-    paddingVertical: verticalScale(15),
-    backgroundColor: "#4ECF1720",
+    paddingTop: verticalScale(15),
+    backgroundColor: "#4ECF1718",
     borderRadius: horizontalScale(10),
     marginVertical: verticalScale(15),
     marginHorizontal: horizontalScale(25),
   },
   phoneSectionContent: {
     flexDirection: "row",
-    alignItems: "center",
     gap: horizontalScale(15),
   },
 });

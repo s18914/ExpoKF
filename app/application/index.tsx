@@ -27,6 +27,7 @@ export default function ApplicationScreen() {
 
   const handleAvatarPress = () => {
     setIsProfileDrawerVisible(!isProfileDrawerVisible);
+    setIsAskDrawerVisible(false);
     // Close MoreMenu if it's open
     if (isMoreMenuVisible) {
       setIsMoreMenuVisible(false);
@@ -53,6 +54,7 @@ export default function ApplicationScreen() {
   const handleBiometricsPress = () => {
     setCurrentScreen('biometrics');
     setIsProfileDrawerVisible(false);
+    setIsAskDrawerVisible(false);
   };
 
   const handleChangePinPress = () => {

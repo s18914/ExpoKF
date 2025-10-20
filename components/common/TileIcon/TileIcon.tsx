@@ -75,7 +75,7 @@ const TileIcon: FunctionComponent<TileIconProps> = ({
         <Defs>
           <RadialGradient id="grad" cx="50%" cy="50%" r="60%">
             <Stop offset="0" stopColor={bgColor} />
-            <Stop offset="0.8" stopColor="rgba(255,255,255,0)" />
+            <Stop offset="0.8" stopColor="rgba(255, 255, 255, 0)" />
           </RadialGradient>
         </Defs>
         <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad)" />
