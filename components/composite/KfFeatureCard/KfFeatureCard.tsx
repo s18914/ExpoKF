@@ -9,6 +9,8 @@ import FaceId from "../../../assets/icons/face_id";
 import Fingerprint from "../../../assets/icons/fingerprint";
 import UserEdit from "../../../assets/icons/user_edit";
 import NoWifi from "../../../assets/icons/no_wifi";
+import Talk from "../../../assets/icons/talk";
+import NotificationPhone from "../../../assets/icons/notification_phone";
 
 type IconName = keyof typeof iconComponents;
 
@@ -32,6 +34,8 @@ const iconComponents = {
   fingerprint: Fingerprint,
   userEdit: UserEdit,
   noWifi: NoWifi,
+  talk: Talk,
+  notificationPhone: NotificationPhone,
 };
 
 const KfFeatureCard: FunctionComponent<Props> = ({ title = "", ...props }) => {

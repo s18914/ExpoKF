@@ -39,7 +39,7 @@ const style = StyleSheet.create({
     height: "auto",
     alignSelf: "flex-end",
     justifyContent: "space-between",
-    paddingTop: "35%",
+    paddingTop: "50%",
   },
   buttonsContainer: {
     display: "flex",

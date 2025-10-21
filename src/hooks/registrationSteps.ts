@@ -4,6 +4,7 @@ export const REGISTRATION_STEPS = {
   "/registration/set-pin": 3,
   "/registration/set-biometry": 4,
   "/registration/set-transaction-confirmation": 5,
+  "/registration/event-notifications": 6,
 } as const;
 
 export const STEP_TO_PATH = {
@@ -12,6 +13,7 @@ export const STEP_TO_PATH = {
   3: "/registration/set-pin",
   4: "/registration/set-biometry",
   5: "/registration/set-transaction-confirmation",
+  6: "/registration/event-notifications",
 } as const;
 
 export type RegistrationPath = keyof typeof REGISTRATION_STEPS;
