@@ -13,7 +13,7 @@ const Hello = () => {
   const router = useRouter();
   const verticalVal = useRef(new Animated.Value(0)).current;
   const goToLogin = () => {
-    router.push("/registration/login");
+    router.push("/activation/login");
   };
 
   const goToApplication = () => {

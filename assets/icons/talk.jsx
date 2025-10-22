@@ -3,8 +3,8 @@ import Svg, { Path } from 'react-native-svg';
 
 const Talk = ({ width = 105, height = 82, fill = "#F0C13D", ...props }) => (
   <Svg
-    width={115}
-    height={87}
+    width={width}
+    height={height}
     viewBox={`-5 -5 115 87`}
     fill="none"
     {...props}

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import Footer from './Footer';
-import Header from './Header';
-import MoreMenu from './MoreMenu';
-import ProfileDrawer from './ProfileDrawer';
+import Footer from '../../components/application/Footer';
+import Header from '../../components/application/Header';
+import MoreMenu from '../../components/application/MoreMenu';
+import ProfileDrawer from '../../components/application/ProfileDrawer';
 import BiometricsScreen from './BiometricsScreen';
 import ChangePinScreen from './ChangePinScreen';
 import { WebView } from 'react-native-webview';
-import AskDrawer from './AskDrawer';
+import AskDrawer from '../../components/application/AskDrawer';
 
 type Screen = 'main' | 'biometrics' | 'changePin';
 

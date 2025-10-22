@@ -5,13 +5,13 @@ import {
   Animated,
   Dimensions,
 } from "react-native";
-import TileIcon from "../../components/common/TileIcon/TileIcon";
-import KfText from "../../components/common/KfText/KfText";
+import TileIcon from "../common/TileIcon/TileIcon";
+import KfText from "../common/KfText/KfText";
 import {
   horizontalScale,
   verticalScale,
 } from "../../assets/styles/scaling";
-import MenuItem from "../../components/common/MenuItem/MenuItem";
+import MenuItem from "../common/MenuItem/MenuItem";
 
 interface MoreMenuProps {
   isVisible: boolean;

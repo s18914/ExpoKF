@@ -4,21 +4,20 @@ import {
   StyleSheet,
   TouchableOpacity,
   Animated,
-  Dimensions,
 } from "react-native";
-import KfText from "../../components/common/KfText/KfText";
-import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
-import ArrowIcon from "../../assets/icons/arrow_icon";
-import Logout from "../../assets/icons/logout"
-import MenuItem from "../../components/common/MenuItem/MenuItem";
+import KfText from "../common/KfText/KfText";
+import { horizontalScale, scaleFontSize, verticalScale } from "../../assets/styles/scaling";
 
-interface ProfileDrawerProps {
+import MenuItem from "../common/MenuItem/MenuItem";
+import TileIcon from "../common/TileIcon/TileIcon";
+
+interface AskDrawerProps {
   isVisible: boolean;
   onClose: () => void;
   onBiometricsPress: () => void;
 }
 
-const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
+const AskDrawer: React.FC<AskDrawerProps> = ({
   isVisible,
   onClose,
   onBiometricsPress,
@@ -60,20 +59,25 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
         ]}
       >
         <View style={styles.itemsSection}>
-          <MenuItem title="Moje dane i ustawienia konta" />
-          <MenuItem title="Biometria i kod PIN" onPress={onBiometricsPress} />
-          <MenuItem title="Powiadomienia (4) " />
-          <MenuItem title="Wiadomości (2)" />
-          <MenuItem title="Profil inwestora" />
+          <MenuItem title="Centrum pomocy" />
+          <MenuItem title="Informacje prawne" />
+          <MenuItem title="Formularz kontaktowy" />
         </View>
-        <TouchableOpacity activeOpacity={0.7}>
-          <View style={styles.logoutButton}>
-            <Logout  width={verticalScale(21)}
-              height={verticalScale(23)}
-              fill="#1F2225"/>
-            <KfText title={"Wyloguj się"} type={40} />
+
+        <View style={styles.phoneSection}>
+          <KfText title="Zadzwoń do nas" type={40} />
+          <View style={styles.phoneSectionContent}>
+            <View style={{paddingTop: verticalScale(5)}}>
+              <TileIcon icon="phone" color="light-green" isSuperSmall />
+            </View>
+            
+            <View >
+              <KfText title="+48 22 599 42 67" type={40} otherStyles={{}} />
+              <KfText title="Jesteśmy do&nbsp;Twojej dyspozycji od&nbsp;poniedziałku" type={7} otherStyles={{color: "#A7B7A0", letterSpacing: -0.38, fontSize: scaleFontSize(12), lineHeight: scaleFontSize(15)}}/>
+              <KfText title="do&nbsp;piątku w godz.&nbsp;8-16" type={7} otherStyles={{color: "#A7B7A0", letterSpacing: -0.38, fontSize: scaleFontSize(12), lineHeight: scaleFontSize(15)}}/>
+            </View>
           </View>
-        </TouchableOpacity>
+        </View>
       </Animated.View>
     </TouchableOpacity>
   );
@@ -107,23 +111,26 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 8,
     elevation: 12,
-    gap: verticalScale(15),
   },
   itemsSection: {
     gap: verticalScale(9),
     paddingHorizontal: horizontalScale(25),
     paddingTop: verticalScale(15),
-    paddingBottom: verticalScale(13),
+    paddingBottom: verticalScale(11),
   },
-  logoutButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    flex: 1,
+  phoneSection: {
     gap: horizontalScale(15),
-    height: verticalScale(40),
     paddingHorizontal: horizontalScale(25),
-    //paddingTop: verticalScale(10),
-  }
+    paddingTop: verticalScale(15),
+    backgroundColor: "#4ECF1718",
+    borderRadius: horizontalScale(10),
+    marginVertical: verticalScale(15),
+    marginHorizontal: horizontalScale(25),
+  },
+  phoneSectionContent: {
+    flexDirection: "row",
+    gap: horizontalScale(15),
+  },
 });
 
-export default ProfileDrawer;
+export default AskDrawer;

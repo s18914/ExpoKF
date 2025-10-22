@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { View, Text } from "react-native";
 import style from "./style";
 import Svg, { Defs, RadialGradient, Rect, Stop } from "react-native-svg";
-import { verticalScale } from "../../../assets/styles/scaling";
+import { horizontalScale, verticalScale } from "../../../assets/styles/scaling";
 import Header from "../../common/KfText/KfText";
 import KfRegistrationHeader from "../KfRegistrationHeader/KfRegistrationHeader";
 import FaceId from "../../../assets/icons/face_id";
@@ -86,8 +86,8 @@ const KfFeatureCard: FunctionComponent<Props> = ({ title = "", ...props }) => {
           {IconComponent && (
             <IconComponent
             style={style.icon}
-            width={verticalScale(90)}
-            height={verticalScale(90)}
+            width={horizontalScale(110)}
+            height={verticalScale(110)}
             />
           )}
           

@@ -11,7 +11,7 @@ import Funds from "../../assets/icons/menu/funds";
 import Basket from "../../assets/icons/menu/basket";
 import Transfer from "../../assets/icons/menu/transfer";
 import { useRouter, usePathname } from "expo-router";
-import KfText from "../../components/common/KfText/KfText";
+import KfText from "../common/KfText/KfText";
 import { scaleFontSize, verticalScale } from "../../assets/styles/scaling";
 
 const ThreeDots = ({ width = 21, height = 20, fill = "#1F2225", ...props }) => (

@@ -2,14 +2,10 @@ import React, { useState } from "react";
 import {
   View,
   StyleSheet,
-  TouchableOpacity,
-  SafeAreaView,
 } from "react-native";
 import KfText from "../../components/common/KfText/KfText";
-import ArrowIcon from "../../assets/icons/arrow_icon";
 import {
   horizontalScale,
-  verticalScale,
 } from "../../assets/styles/scaling";
 import KfHeader from "../../components/common/Header/Header";
 import TileIcon from "../../components/common/TileIcon/TileIcon";

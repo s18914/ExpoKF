@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Conversation from '../../assets/icons/conversation';
-import KfText from '../../components/common/KfText/KfText';
+import KfText from '../common/KfText/KfText';
 import { horizontalScale, scaleFontSize, verticalScale } from '../../assets/styles/scaling';
 import UserEmpty from '../../assets/icons/user_empty';
 import ArrowDown from '../../assets/icons/common/arrow_down';

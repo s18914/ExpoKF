@@ -76,9 +76,10 @@ const KfInput: FunctionComponent<Props> = ({ ...props }) => {
           onBlur={props.onBlur}
           placeholderTextColor={props.hasError ? "#EE5858" : "#C0C0C0"}
           autoCorrect={false}
-          autoComplete="off"
+          //autoComplete="off"
           spellCheck={false}
-          textContentType="none"
+          //textContentType="none"
+          underlineColorAndroid="transparent"
         />
 
         <View style={style.rightIconsContainer}>

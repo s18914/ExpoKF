@@ -13,7 +13,6 @@ import {
   scaleFontSize,
   verticalScale,
 } from "../../assets/styles/scaling";
-import BackButton from "../../components/common/BackButton/BackButton";
 import KfHeader from "../../components/common/Header/Header";
 
 interface BiometricsScreenProps {
