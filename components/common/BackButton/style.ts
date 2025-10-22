@@ -3,7 +3,6 @@ import { horizontalScale } from '../../../assets/styles/scaling';
 
 const style = StyleSheet.create({
   container: {
-    backgroundColor: '#FAFAFA',
     width: horizontalScale(44),
     height: horizontalScale(44),
     borderRadius: horizontalScale(26),

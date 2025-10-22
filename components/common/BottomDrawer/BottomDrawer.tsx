@@ -67,37 +67,43 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({
       transparent
       onRequestClose={onClose}
       animationType="none"
+      statusBarTranslucent
     >
-      <Animated.View style={[styles.overlay, { opacity: opacityAnim }]}>
-        <TouchableOpacity
-          style={styles.overlayTouchable}
-          activeOpacity={1}
-          onPress={onClose}
-        />
-      </Animated.View>
-      <Animated.View style={[styles.sheet, { transform: [{ translateY }] }]}>
-        <Pressable 
-          style={styles.close} 
-          onPress={onClose}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-        >
-          <Image source={require("../../../assets/images/close.png")} />
-        </Pressable>
+      <View style={styles.container}>
+        <Animated.View style={[styles.overlay, { opacity: opacityAnim }]}>
+          <TouchableOpacity
+            style={styles.overlayTouchable}
+            activeOpacity={1}
+            onPress={onClose}
+          />
+        </Animated.View>
+        <Animated.View style={[styles.sheet, { transform: [{ translateY }] }]}>
+          <Pressable 
+            style={styles.close} 
+            onPress={onClose}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          >
+            <Image source={require("../../../assets/images/close.png")} />
+          </Pressable>
 
-        {children}
-      </Animated.View>
+          {children}
+        </Animated.View>
+      </View>
     </Modal>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   overlay: {
     position: "absolute",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(0,0,0,0.3)",
+    backgroundColor: "rgba(0,0,0,0.32)",
   },
   overlayTouchable: {
     flex: 1,

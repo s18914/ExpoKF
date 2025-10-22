@@ -18,7 +18,6 @@ const SetPin = () => {
   const [activeField, setActiveField] = useState<"pin" | "pin2" | null>(null);
   const [error, setError] = useState<string>("");
 
-  // Przywróć zapisany PIN przy cofaniu się do tego ekranu
   useEffect(() => {
     if (regContext.pin && regContext.pin.length === 6) {
       setPinFirst(regContext.pin);
@@ -26,7 +25,6 @@ const SetPin = () => {
     }
   }, []);
 
-  // Sprawdzenie czy PINy są identyczne i mają 6 cyfr
   const isPinValid = pinFirst.length === 6 && pinSecond.length === 6 && pinFirst === pinSecond;
 
   const handleContinue = () => {
@@ -40,15 +38,12 @@ const SetPin = () => {
       return;
     }
 
-    // Zapisz PIN w kontekście
     regContext.setPin(pinFirst);
     
-    // Przejdź do następnego kroku (biometria lub powiadomienia jeśli brak biometrii)
     if (regContext.biometryInfo?.isAvailable) {
       regContext.goToNextStep();
     } else {
-      // Pomiń kroki biometrii i idź do powiadomień
-      regContext.goToStep(6); // Krok 6 to event-notifications
+      regContext.goToStep(4);
     }
   };
 

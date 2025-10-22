@@ -9,7 +9,8 @@ interface Props {
 
 const KfStatusBar: FunctionComponent<Props> = () => {
   const registerCtx = useContext(RegistrationContext);
-  const barWidth = (registerCtx.step ?? 1) * 20;
+  const maxSteps = registerCtx.getMaxSteps();
+  const barWidth = ((registerCtx.step ?? 1) / maxSteps) * 100;
 
   return (
     <LinearGradient

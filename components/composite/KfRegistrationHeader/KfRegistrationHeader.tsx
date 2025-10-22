@@ -22,7 +22,7 @@ const KfRegistrationHeader: FunctionComponent<Props> = () => {
         )}
 
         <Header
-          title={`Aktywacja aplikacji (krok ${registerCtx.step} z 5)`}
+          title={`Aktywacja aplikacji (krok ${registerCtx.step} z ${registerCtx.getMaxSteps()})`}
           type={5}
         />
       </View>

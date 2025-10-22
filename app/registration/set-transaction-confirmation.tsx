@@ -17,6 +17,7 @@ const SetTransactionConfirmation = () => {
   const [description, setDescription] = useState("Włącz potwierdzanie zleceń za pomocą Touch ID.");
   const [buttonText, setButtonText] = useState("Włącz Touch ID");
   const [icon, setIcon] = useState<"fingerprint" | "faceId" | "userEdit" | "noWifi" | "notificationPhone">("fingerprint");
+const [color, setColor] = useState<GradientColor>(GradientColor.Green);
 
   useEffect(() => {
     if (regContext.biometryInfo) {
@@ -27,17 +28,20 @@ const SetTransactionConfirmation = () => {
         setDescription("Włącz potwierdzanie zleceń za pomocą Face ID.");
         setButtonText("Włącz Face ID");
         setIcon("faceId");
+        setColor(GradientColor.Green);
       } else if (type === BiometryType.TOUCH_ID) {
         setTitle("Potwierdzanie transakcji Touch ID");
         setDescription("Włącz potwierdzanie zleceń za pomocą Touch ID.");
         setButtonText("Włącz Touch ID");
         setIcon("fingerprint");
+        setColor(GradientColor.Violet);
       } else {
         // Android lub inne
         setTitle("Potwierdzanie transakcji biometrią");
         setDescription("Włącz potwierdzanie zleceń za pomocą biometrii.");
         setButtonText("Włącz potwierdzanie biometryczne");
         setIcon("fingerprint");
+        setColor(GradientColor.Violet);
       }
     }
   }, [regContext.biometryInfo]);
@@ -57,8 +61,8 @@ const SetTransactionConfirmation = () => {
       <KfFeatureCard
         title={title}
         title2={description}
-        title3={`Po włączeniu ${title.replace('Potwierdzanie transakcji ', '')} nadal możesz potwierdzać zlecenia za pomocą kodu PIN.`}
-        color={GradientColor.Green}
+        title3={`Po włączeniu ${icon === 'fingerprint' ? 'biometrii' : title.replace('Potwierdzanie transakcji ', '')} nadal możesz potwierdzać zlecenia za pomocą kodu PIN.`}
+        color={color}
         icon={icon}
       />
       <View

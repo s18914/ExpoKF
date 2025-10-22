@@ -17,6 +17,7 @@ const SetBiometry = () => {
   const [description, setDescription] = useState("Włącz logowanie do aplikacji odciskiem palca Touch ID.");
   const [buttonText, setButtonText] = useState("Włącz Touch ID");
   const [icon, setIcon] = useState<"fingerprint" | "faceId" | "userEdit" | "noWifi" | "notificationPhone">("fingerprint");
+  const [color, setColor] = useState<GradientColor>(GradientColor.Violet);
 
   useEffect(() => {
     if (regContext.biometryInfo) {
@@ -27,16 +28,19 @@ const SetBiometry = () => {
         setDescription("Włącz logowanie do aplikacji za pomocą Face ID.");
         setButtonText("Włącz Face ID");
         setIcon("faceId");
+        setColor(GradientColor.Green);
       } else if (type === BiometryType.TOUCH_ID) {
         setTitle("Logowanie Touch ID");
         setDescription("Włącz logowanie do aplikacji odciskiem palca Touch ID.");
         setButtonText("Włącz Touch ID");
         setIcon("fingerprint");
+        setColor(GradientColor.Violet);
       } else {
         setTitle("Logowanie biometryczne");
         setDescription("Włącz logowanie biometryczne za pomocą jednej z trzech metod: Fingerprint (czytnik linii papilarnych), Face unlock (rozpoznawanie twarzy) lub Iris scanner (skaner tęczówki).");
         setButtonText("Włącz logowanie biometryczne");
         setIcon("fingerprint");
+        setColor(GradientColor.Violet);
       }
     }
   }, [regContext.biometryInfo]);
@@ -56,8 +60,8 @@ const SetBiometry = () => {
       <KfFeatureCard
         title={title}
         title2={description}
-        title3={`Po włączeniu ${title.replace('Logowanie ', '')} nadal możesz logować się do aplikacji za pomocą kodu PIN. Zawsze możesz wyłączyć tę funkcję w menu „Ustawienia konta”.`}
-        color={GradientColor.Violet}
+        title3={`Po włączeniu ${icon === 'fingerprint' ? 'biometrii' : title.replace('Logowanie ', '')} nadal możesz logować się do aplikacji za pomocą kodu PIN. Zawsze możesz wyłączyć tę funkcję w menu „Ustawienia konta”.`}
+        color={color}
         icon={icon}
       />
       <View

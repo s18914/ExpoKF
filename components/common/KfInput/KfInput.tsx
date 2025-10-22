@@ -75,6 +75,10 @@ const KfInput: FunctionComponent<Props> = ({ ...props }) => {
           onFocus={props.onFocus}
           onBlur={props.onBlur}
           placeholderTextColor={props.hasError ? "#EE5858" : "#C0C0C0"}
+          autoCorrect={false}
+          autoComplete="off"
+          spellCheck={false}
+          textContentType="none"
         />
 
         <View style={style.rightIconsContainer}>

@@ -1,9 +1,7 @@
 import { Slot, useRouter } from "expo-router";
 import { createContext, useEffect, useState } from "react";
 import { BackHandler, ScrollView } from "react-native";
-import KfRegistrationHeader from "../../components/composite/KfRegistrationHeader/KfRegistrationHeader";
 import useRegistrationStep from "../../src/hooks/useRegistrationStep";
-import { RegistrationStep } from "../../src/hooks/registrationSteps";
 import { 
   getBiometryInfo, 
   BiometryInfo, 
@@ -15,10 +13,11 @@ import {
 } from "../../src/services/registrationStorage";
 
 export type RegistrationContextModel = {
-  step: RegistrationStep;
-  goToStep: (step: RegistrationStep) => void;
+  step: number;
+  goToStep: (step: number) => void;
   goToPreviousStep: () => void;
   goToNextStep: () => void;
+  getMaxSteps: () => number;
   // Dane rejestracji
   pin: string;
   setPin: (pin: string) => void;
@@ -39,17 +38,16 @@ export const RegistrationContext = createContext<RegistrationContextModel>(
 
 export default function Layout() {
   const router = useRouter();
-  const { step, goToStep, goToPreviousStep, goToNextStep, isRegistrationPath } =
-    useRegistrationStep();
   
-  // Stan danych rejestracji
   const [pin, setPin] = useState<string>("");
   const [biometryInfo, setBiometryInfo] = useState<BiometryInfo | null>(null);
   const [biometryLoginEnabled, setBiometryLoginEnabled] = useState<boolean>(false);
   const [biometryTransactionEnabled, setBiometryTransactionEnabled] = useState<boolean>(false);
   const [notificationsEnabled, setNotificationsEnabled] = useState<boolean>(false);
 
-  // Sprawdzenie dostępności biometrii przy montowaniu
+  const { step, goToStep, goToPreviousStep, goToNextStep, getMaxSteps, isRegistrationPath } =
+    useRegistrationStep(biometryInfo?.isAvailable);
+
   useEffect(() => {
     const checkBiometry = async () => {
       const info = await getBiometryInfo();
@@ -59,20 +57,16 @@ export default function Layout() {
     checkBiometry();
   }, []);
 
-  // Funkcja zapisująca wszystkie dane i kończąca rejestrację
   const completeRegistration = async () => {
     try {
-      // Zapisz wszystkie dane
       await savePin(pin);
       await saveBiometryLoginEnabled(biometryLoginEnabled);
       await saveBiometryTransactionEnabled(biometryTransactionEnabled);
       await saveNotificationsEnabled(notificationsEnabled);
       
-      // Przekieruj do aplikacji
       router.replace("/application");
     } catch (error) {
       console.error("Error completing registration:", error);
-      // Możesz tu dodać obsługę błędów, np. pokazanie alertu
     }
   };
 
@@ -85,9 +79,9 @@ export default function Layout() {
       () => {
         if (step > 1) {
           goToPreviousStep();
-          return true; // Prevent default behavior
+          return true;
         }
-        return false; // Allow default behavior (exit app)
+        return false;
       }
     );
 
@@ -106,6 +100,7 @@ export default function Layout() {
           goToStep, 
           goToPreviousStep, 
           goToNextStep,
+          getMaxSteps,
           pin,
           setPin,
           biometryInfo,
