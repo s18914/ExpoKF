@@ -106,7 +106,7 @@ const Hello = () => {
       <View style={styles.content}>
         <Image
           source={require("../../assets/images/splash-icon.png")}
-          style={{ width: 165, height: 45 }}
+          style={{ width: horizontalScale(165), height: verticalScale(45) }}
         />
         <View style={styles.text}>
           <KfText

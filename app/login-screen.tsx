@@ -6,6 +6,8 @@ import {
   Platform,
   TouchableOpacity,
   ActivityIndicator,
+  Image,
+  Pressable,
 } from "react-native";
 import * as LocalAuthentication from "expo-local-authentication";
 import { useRouter } from "expo-router";
@@ -22,6 +24,10 @@ import {
 } from "../src/services/registrationStorage";
 import AskSmall from "../assets/icons/ask_small";
 import InfoSmall from "../assets/icons/info";
+import Svg, { Defs, RadialGradient, Rect, Stop } from "react-native-svg";
+import LogoKfIcon from "../assets/icons/logo_kf";
+import BottomDrawer from "../components/common/BottomDrawer/BottomDrawer";
+import ForgotPinDrawer from "../components/drawers/ForgotPinDrawer";
 
 interface BiometryInfoType {
   isAvailable: boolean;
@@ -39,6 +45,7 @@ const LoginScreen = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [biometryInfo, setBiometryInfo] = useState<any>(null);
   const [showBiometryButton, setShowBiometryButton] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const initializeBiometry = async () => {
@@ -60,17 +67,17 @@ const LoginScreen = () => {
       }
     };
 
-    initializeBiometry();
+    //initializeBiometry();
   }, []);
 
   useEffect(() => {
     const showSub = Keyboard.addListener(
       Platform.OS === "ios" ? "keyboardWillShow" : "keyboardDidShow",
-      (e) => setKeyboardHeight(e.endCoordinates.height)
+      (e) => setKeyboardHeight(e.endCoordinates.height),
     );
     const hideSub = Keyboard.addListener(
       Platform.OS === "ios" ? "keyboardWillHide" : "keyboardDidHide",
-      () => setKeyboardHeight(0)
+      () => setKeyboardHeight(0),
     );
 
     return () => {
@@ -128,13 +135,41 @@ const LoginScreen = () => {
 
   return (
     <View style={globalStyles.container}>
+      <Svg
+        width={"130%"}
+        height={500}
+        style={{ position: "absolute", top: -270 }}
+      >
+        <Defs>
+          <RadialGradient id="grad" cx="50%" cy="22%" r="60%" fx="50%" fy="50%">
+            <Stop offset="0" stopColor="rgb(111, 219, 64)" />
+            <Stop offset="1" stopColor="rgba(255, 255, 255)" />
+          </RadialGradient>
+        </Defs>
+        <Rect x="0" y="-40" width="100%" height="100%" fill="url(#grad)" />
+      </Svg>
+
+      <View style={{ alignSelf: "center" }}>
+        <LogoKfIcon width={horizontalScale(165)} height={verticalScale(45)} />
+      </View>
+
       <View style={[globalStyles.content, styles.content]}>
         <View style={{ flexGrow: 1 }}>
           <TileIcon icon="badge_lock" color="light-green" />
-          <KfText title="Witaj ponownie!" type={1} />
+          <KfText
+            title="Witaj ponownie!"
+            type={1}
+            otherStyles={{
+              marginTop: verticalScale(10),
+              paddingBottom: verticalScale(12),
+            }}
+          />
           <KfText
             title="Podaj kod PIN, aby zalogować się do aplikacji."
-            type={6}
+            type={5}
+            otherStyles={{
+              marginBottom: verticalScale(9),
+            }}
           />
 
           {/* Biometry Button */}
@@ -164,7 +199,9 @@ const LoginScreen = () => {
                     )}
                   </View>
                   <KfText
-                    title={biometryInfo?.displayName || "Logowanie biometryczne"}
+                    title={
+                      biometryInfo?.displayName || "Logowanie biometryczne"
+                    }
                     type={7}
                   />
                 </>
@@ -172,7 +209,6 @@ const LoginScreen = () => {
             </TouchableOpacity>
           )}
 
-          {/* PIN Code Input */}
           <CodeInput
             label="Kod PIN"
             value={pin}
@@ -182,7 +218,6 @@ const LoginScreen = () => {
             isActive={isCodeFocused}
           />
 
-          {/* Error Message */}
           {error && (
             <KfText
               title={error}
@@ -192,11 +227,17 @@ const LoginScreen = () => {
             />
           )}
 
-          <KfText
-            title="Nie pamiętam kodu PIN"
-            type={10}
-            otherStyles={{ marginTop: verticalScale(16) }}
-          />
+          <Pressable onPress={() => setVisible(true)}>
+            <KfText
+              title="Nie pamiętam kodu PIN"
+              type={10}
+              otherStyles={{ fontFamily: "EuclidCircularM" }}
+            />
+          </Pressable>
+
+          <BottomDrawer visible={visible} onClose={() => setVisible(false)}>
+            <ForgotPinDrawer />
+          </BottomDrawer>
         </View>
 
         {/* Footer with Help and Legal Info */}
@@ -225,6 +266,7 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   content: {
     paddingBottom: 0,
+    paddingTop: verticalScale(55),
   },
   biometryButton: {
     flexDirection: "row",
@@ -246,11 +288,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   footer: {
-    paddingHorizontal: horizontalScale(25),
     paddingBottom: verticalScale(20),
     paddingTop: verticalScale(16),
-    borderTopWidth: 1,
-    borderTopColor: "#f0f0f0",
   },
   footerLinks: {
     flexDirection: "row",

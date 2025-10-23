@@ -3,6 +3,7 @@ import { Pressable, Text, View } from "react-native";
 import style from "./style";
 import { LinearGradient } from "expo-linear-gradient";
 import Svg, { Path } from "react-native-svg";
+import ArrowIcon from "../../../assets/icons/arrow_icon";
 
 interface Props {
   title: string;
@@ -65,15 +66,7 @@ const KfButton: FunctionComponent<Props> = ({
           )}
           <Text style={style.title}>{props.title}</Text>
           {props.icon == "arrow" && (
-            <Svg
-              width={13}
-              height={13}
-              fill="#fff"
-              viewBox="0 0 100 100"
-              {...props}
-            >
-              <Path d="m58.369 10.173-5.62 5.87 31.267 29.892H0v8.117h84.016L52.75 83.957l5.619 5.87L100 49.993Z" />
-            </Svg>
+            <ArrowIcon style={{ transform: [{ scale: 1.3 }] }} />
           )}
         </Pressable>
       </LinearGradient>

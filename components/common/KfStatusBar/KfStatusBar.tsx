@@ -2,7 +2,7 @@ import React, { FunctionComponent, useContext } from "react";
 
 import style from "./style";
 import { LinearGradient } from "expo-linear-gradient";
-import { RegistrationContext } from "../../../app/registration/_layout";
+import { RegistrationContext } from "../../../app/activation/_layout";
 
 interface Props {
 }

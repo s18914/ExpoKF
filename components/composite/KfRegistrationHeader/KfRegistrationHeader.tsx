@@ -4,7 +4,7 @@ import style from "./style";
 import BackButton from "../../common/BackButton/BackButton";
 import Header from "../../common/KfText/KfText";
 import KfStatusBar from "../../common/KfStatusBar/KfStatusBar";
-import { RegistrationContext } from "../../../app/registration/_layout";
+import { RegistrationContext } from "../../../app/activation/_layout";
 
 interface Props {}
 
